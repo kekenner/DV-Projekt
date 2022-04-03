@@ -1,2 +1,9 @@
+Team 13 "Vier gewinnt":
 
-Führen Sie hier die Namen aller Mitglieder Ihres Teams auf.
+- Marius Mauth
+- Marven Schwarz
+- Simon Fluck
+- Leon Lafera
+- Fabian Eiternik
+- Kevin Kenner
+
