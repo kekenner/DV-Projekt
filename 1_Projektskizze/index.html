@@ -24,19 +24,101 @@
 		<h2>1. Projekt-Beschreibung</h2>
 		<p>Dieses Projekt soll die Planung, Programmierung und Inbetriebnahme des Spiels "Vier gewinnt" beinhalten.</p>
 		<h2>2. Features und Anforderungen</h2>
-		<p>TODO: Stellen Sie die aus Ihrer Sicht wichtigsten funktionalen Anforderungen (maximal 10) zusammen:</p>
+		<p><strong>Was soll Ihre Anwendung leisten?</strong></p>
+		<p>Implementierung des Spiels 4-Gewinnt f&uuml;r 2 Spieler</p>
+		<p>Erkennung von:</p>
 		<ul>
-			<li>Was soll Ihre Anwendung leisten?</li>
-			<li>Welche Dienste werden angeboten?</li>
-			<li>Welche Eingangsdaten sind erforderlich? Zu welchen Ausgaben werden diese verarbeitet?</li>
-			<li>Wie soll sich das System in bestimmten Situationen verhalten?</li>
-			<li>Welche Daten sind dauerhaft zu speichern?</li>
+		<li>illegalen Z&uuml;gen (Spalte bereits voll)</li>
+		<li>aktuellem Spielzustand (gewonnen oder verloren oder unentschieden oder Spiel geht weiter)</li>
 		</ul>
-		<p>TODO: Darüber hinaus sollen nicht-funktionale Anforderungen spezifiziert werden:</p>
+		<p>Bereitstellung einer grafischen Schnittstelle:</p>
 		<ul>
-			<li>Wie soll die Bedieneroberfläche aussehen?</li>
-			<li>In welcher Systemumgebung soll Ihr Programm lauffähig sein?</li>
-			<li>Mit welchen Entwicklungswerkzeugen wird gearbeitet?</li>
+		<li>Bedienen des Spiels (Zug machen, Spiel neu starten)</li>
+		<li>Spielstand anzeigen und welcher Spieler am Zug ist</li>
+		</ul>
+		<p>Konfigurationsm&ouml;glichkeit des Spiels</p>
+		<ul>
+		<li>Gr&ouml;&szlig;e des Felds</li>
+		</ul>
+		<p>&nbsp;</p>
+		<p><strong>Welche Dienste werden angeboten?</strong></p>
+		<p>Anwendungsf&auml;lle:</p>
+		<p>- Zug setzen</p>
+		<p>- Spiel neu starten (Reset)</p>
+		<p>- Konfigurieren</p>
+		<p>&nbsp;</p>
+		<p><strong>Welche Eingangsdaten sind erforderlich? Zu welchen Ausgaben werden diese verarbeitet?</strong></p>
+		<p>Eingangsdaten: Spieler w&auml;hlt Spalte aus</p>
+		<p>Ausgabe: grafische Schnittstelle visualisiert den Spielzug und den neuen Spielstand</p>
+		<p>&nbsp;</p>
+		<p><strong>Wie soll sich das System in bestimmten Situationen verhalten?</strong></p>
+		<p>Spielsituationen:</p>
+		<ul>
+		<li>gewonnen / verloren -&gt; Spiel beendet + grafische Oberfl&auml;che verk&uuml;ndet den Gewinner (keine weiteren Z&uuml;ge m&ouml;glich)</li>
+		<li>unentschieden -&gt; Spiel beendet (keine weiteren Z&uuml;ge m&ouml;glich)</li>
+		<li>ung&uuml;ltiger Spielzug -&gt; Spiel signalisiert Ung&uuml;ltigkeit des Zuges (Ton); Spieler muss einen g&uuml;ltigen Zug setzen</li>
+		<li>Konfiguration hat sich ge&auml;ndert -&gt; Reset</li>
+		</ul>
+		<p>&nbsp;</p>
+		<p><strong>Welche Daten sind dauerhaft zu speichern?</strong></p>
+		<p>Belegung des Feldes, Spieler der den n&auml;chsten Zug macht</p>
+		<p>&nbsp;</p>
+		<p><strong>Wie soll die Bedieneroberfl&auml;che aussehen?</strong></p>
+		<p><img src="blob:https://www.tiny.cloud/bec724dd-90d9-45c9-b6f6-2224b17a926f" width="529" height="241" /></p>
+		<p>&nbsp;</p>
+		<p><strong>In welcher Systemumgebung soll Ihr Programm lauff&auml;hig sein?</strong></p>
+		<p>Installierte Java 17 Runtime-Umgebung</p>
+		<p>&nbsp;</p>
+		<p><strong>Mit welchen Entwicklungswerkzeugen wird gearbeitet?</strong></p>
+		<p>Als IDE: Eclipse for Java Developers</p>
+		<p>Programmiersprache: Java 17; (Swing-Bibliothek als UI)</p>
+		</ul>
+
+		<h2>3. Architektur</h2>
+		<p>TODO: Beschreibung der Software-Architektur inkl. Klassendiagramm z. B.:</p>
+		<p>Das Klassendiagramm kann mit Hilfe von Pseudo Code (siehe HTML Quelltext) erstellt werden <a href="https://mermaid-js.github.io/mermaid/#/classDiagram">(Hilfe)</a>.
+
+		<div class="diagram">
+			classDiagram
+			class Animal {
+				int age
+				String gender
+				isMammal()
+				mate()
+			}
+			class Duck {
+				String beakColor
+				swim()
+				quack()
+			}
+			class Fish {
+				int sizeInFeet
+				canEat()
+			}
+			class Zebra {
+				bool is_wild
+				run()
+			}
+			Animal <|-- Duck
+			Animal <|-- Fish
+			Animal <|-- Zebra
+		</div>
+		<h2>4. Aufwandsschätzung und Aufteilung</h2>
+		<p>TODO: Schätzen Sie den Aufwand der verschiedenen Teile Ihres Programms ab und legen Sie fest, wie die Aufteilung auf die Gruppenmitglieder aussehen soll.</p>
+		<h2>Optional: Verweis auf andere HTML Dateien</h2>
+		<p><a href="otherfile.html">Eine weitere HTML-Datei</a></p>
+	</main>
+	<footer></footer>
+</body>
+</html>
+
+<!-- scripts to render diagrams (do not touch!) -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+	mermaid.initialize({startOnLoad:true});
+	let diagrams = document.querySelectorAll(".diagram")
+	mermaid.init({}, diagrams);
+</script>
 		</ul>
 		<h2>3. Architektur</h2>
 		<p>TODO: Beschreibung der Software-Architektur inkl. Klassendiagramm z. B.:</p>
