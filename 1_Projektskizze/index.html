@@ -142,15 +142,15 @@
 			}
 
 			class Field {
-				int Spalte
-				int Zeile
-				regelaenderung()
+				value (FieldValue)
+				draw()
+				getValue()
+				setValue()
 			}
 
 			class GUI {
-				int Spalte
-				int Zeile
-				regelaenderung()
+				currentPlayer(FieldValue)
+				initGame()
 			}
 
 			VierGewinnt <|-- Server
