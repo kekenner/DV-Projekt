@@ -95,6 +95,7 @@
                                 konfiguration Konfiguration
 				spieler1 Spieler
 				spieler2 Spieler
+                                feld int
 					C VierGewinnt(Konfiguration, Spieler, Spieler)
 					setzeZug(int, Spieler)
 					gueltigerZug(int)
@@ -106,11 +107,14 @@
 			class Spieler {
 				name String
 				farbe String
+                                spielerZeichen int
 					C Spieler(String, String)
 					getName()
 					setName(String)
 					getFarbe()
 					setFarbe(String)
+                                        getspielerZeichen()
+                                        setspielerZeichen(int)
 			}
 			class Konfiguration {
 				anzahlSpalten int
