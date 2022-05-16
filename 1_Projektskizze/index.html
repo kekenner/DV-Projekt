@@ -85,11 +85,11 @@
 			classDiagram
 			class Server {
 				int port
-				startListening()
+				startAbfrage()
 			}
 			class Client {
 				InetSocketAdress adress
-				spielzug()
+				startAbfrage()
 			}
 			class VierGewinnt {
                                 konfiguration Konfiguration
@@ -128,9 +128,6 @@
 			}
 
 
-			class Gamewindow {
-				
-			}
 
 			class GamePanel {
 				
@@ -154,7 +151,6 @@
 			}
 
 			VierGewinnt <|-- Server
-			Client <|-- Gamewindow
 			Client <|-- GamePanel
 			Client <|-- Field
 			Client <|-- GUI
