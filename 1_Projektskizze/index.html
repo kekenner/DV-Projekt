@@ -129,15 +129,16 @@
 
 
 			class Gamewindow {
-				int Spalte
-				int Zeile
-				regelaenderung()
+				
 			}
 
 			class GamePanel {
-				int Spalte
-				int Zeile
-				regelaenderung()
+				
+				
+				paintComponent()
+				checkField()
+				checkWin()
+				mouseClicked()
 			}
 
 			class Field {
@@ -146,7 +147,7 @@
 				regelaenderung()
 			}
 
-			class FieldValue {
+			class GUI {
 				int Spalte
 				int Zeile
 				regelaenderung()
@@ -156,7 +157,7 @@
 			Client <|-- Gamewindow
 			Client <|-- GamePanel
 			Client <|-- Field
-			Client <|-- FieldValue
+			Client <|-- GUI
                         Spieler <|-- VierGewinnt
                         Konfiguration <|-- VierGewinnt
 		</div>
