@@ -75,20 +75,19 @@
 		</ul>
 
 		<h2>3. Architektur</h2>
-		<p>Für die Umsetzung werden drei Klassen programmiert. Zum einen die Hauptklasse "VierGewinnt", die das eigentliche Spiel in Standardausführung beinhaltet.</p>
-		<p>Zum anderen die Klasse "Spieler", die sämtliche Informationen der Spieler enthält, auf die die Klasse "VierGewinnt" zugreift und die Klasse "Konfiguration", die die Klasse "VierGewinnt" erbt</p>
-		<p>und weitere Konfigurationsmöglichkeiten enthält.</p>
+		<p>Für die Umsetzung werden zwei Klassen programmiert. Zum einen die Hauptklasse "Server", die das eigentliche Spiel in Standardausführung umfasst.</p>
+		<p>Zum anderen die Klasse "Client", die die Graphische Oberfläche enthält, die jeder Spieler auf seinem Endgerät sieht.</p>
+		<p>Die Klasse "Client" fragt ständig den Server nach Veränderungen am Spiel ab, die dann auf der graphischen Oberfläche des Client angezeigt werden.</p>
+		<p>Analog dazu fragt der Server je nach Spielreihenfolge den jeweiligen Client nach einem Spielzug ab.</p>
+
 
 		<div class="diagram">
 			classDiagram
-			class VierGewinnt {
-				Spieler Spieler1
-				Spieler Spieler2
-				KontrolleHorizontal()
-				KontrolleVertikal()
-				KontrolleDiagonal()
+			class Server {
+				@Fabian Attriubute eintragen
+				@Leon Methoden eintragen
 			}
-			class Spieler {
+			class Client {
 				String Name
 				String Farbe
 				spielzug()
