@@ -47,6 +47,19 @@ public class VierGewinnt {
 	 */
 	private int[][] feld;
 	//2D Array
+
+
+	/**
+	 * Erzeugt das Feld der Schaltfläche, sowie Spieler 1 und Spieler 2. 
+	 * Die Konfiguration der Schaltfläche erlaubt der Anwendung das Ändern des Aussehens. 
+	 * @param konfiguration
+	 * @param spieler1
+	 * @param spieler2
+	 */
+	public VierGewinnt(Konfiguration konfiguration, Spieler spieler1, Spieler spieler2) {
+		this.konfiguration = konfiguration;
+		this.spieler1 = spieler1;
+		this.spieler2 = spieler2;
 	
 	
 	/**
@@ -56,8 +69,12 @@ public class VierGewinnt {
 	 * @param spieler - Spieler, der den Zug gemacht hat.
 	 * @return "true" - bei einem gültigem Zug und "false" bei ungültigem Zug.
 	 */
+
 	public boolean setzeZug(int spalte, Spieler spieler) { return false;}
-	
+
+	//ist der Zug nicht gültig? Dann Methode verlassen (if-Abfrage)
+	//wandern in der Spalte von unten nach oben bis auf eine "freie Stelle" gestoßen wird (while-Schleife)
+
 	
 	/**
 	 * Methode analysiert das Spielfeld - sind alle Spalten des Feldes mit Chips belegt, 
@@ -69,6 +86,9 @@ public class VierGewinnt {
 	 */
 	private boolean gueltigerZug(int spalte) { return false;}
 	
+	//wurde eine gültige Spalte angegeben? Ansonsten "diese Spalte gibt es nicht!" (if-Abfrage)
+	//prüfen, ob oberste Zeile frei ist, da Spalte sonst voll
+
 	
 	/** 
 	 * Methode prüft nach jedem Spielzug, wie das Spiel ausgegangen ist (gewonnen oder unentschieden),
@@ -79,11 +99,14 @@ public class VierGewinnt {
 	 */
 	private boolean hatGewonnen(Spieler spieler, int spalte) { return false;}
 	
+	//Position des letzen Einwurfs finden und prüfen, ob vier Steine horizontal, vertikal oder diagonal liegen (=gewonnen)
+	//Lösung mit ArrayIndexOutOfBounds exception???
+
 	
 	/**
-	 * Gibt die Konfiguration zurück.
-	 * @return Konfiguration
-	 */
+ 	* Gibt die Konfiguration zurück.
+	* @return Konfiguration
+	*/
 	
 	public Konfiguration getKonfiguration() {
 		return konfiguration;

@@ -18,6 +18,16 @@ public class Konfiguration {
 	 * Anzahl der Zeilen des Spielfelds.
 	 */
 	private int anzahlZeilen;
+
+	/**
+	 * Konstruktor, um eine Konfiguration zu erzeugen
+	 * @param anzahlSpalten Anzahl Spalten im Spiel
+	 * @param anzahlZeilen Anzahl Zeilen im Spiel
+	 */
+	public Konfiguration(int anzahlSpalten, int anzahlZeilen) {
+		this.anzahlSpalten = anzahlSpalten;
+		this.anzahlZeilen = anzahlZeilen;
+	}
 	
 	
 	/**
