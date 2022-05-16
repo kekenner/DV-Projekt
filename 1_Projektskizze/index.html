@@ -91,14 +91,20 @@
 				InetSocketAdress adress
 				spielzug()
 			}
-			class Konfiguration {
+			class Viergewinnt {
 				int Spalte
 				int Zeile
 				regelaenderung()
 			}
 
-			VierGewinnt <|-- Spieler
-			VierGewinnt <|-- Konfiguration
+			class grOberflaeche {
+				int Spalte
+				int Zeile
+				regelaenderung()
+			}
+
+			VierGewinnt <|-- Server
+			CLient <|-- grOberflaeche
 		</div>
 
 
