@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Die Klasse "Konfiguration" enthÃ¤lt die MÃ¶glichkeit, die Spielfelddimension anzupassen.
+ * Die Klasse "Konfiguration" enthält die Möglichkeit, die Spielfelddimension anzupassen.
  * @author fabian.eiternik
  *
  */
@@ -18,20 +18,21 @@ public class Konfiguration {
 	 * Anzahl der Zeilen des Spielfelds.
 	 */
 	private int anzahlZeilen;
-
+	
 	/**
 	 * Konstruktor, um eine Konfiguration zu erzeugen
 	 * @param anzahlSpalten Anzahl Spalten im Spiel
 	 * @param anzahlZeilen Anzahl Zeilen im Spiel
 	 */
 	public Konfiguration(int anzahlSpalten, int anzahlZeilen) {
+		super();
 		this.anzahlSpalten = anzahlSpalten;
 		this.anzahlZeilen = anzahlZeilen;
 	}
-	
-	
+
+
 	/**
-	 * Gibt die Anzahl der Spalten zurÃ¼ck.
+	 * Gibt die Anzahl der Spalten zurück.
 	 * @return Anzahl Spalten
 	 */
 	public int getAnzahlSpalten() {
@@ -40,7 +41,7 @@ public class Konfiguration {
 	
 	
 	/**
-	 * Die Anzahl der Spalten des Spielfeld wird ausgewÃ¤hlt.
+	 * Die Anzahl der Spalten des Spielfeld wird ausgewählt.
 	 * @param anzahlSpalten
 	 */
 	public void setAnzahlSpalten(int anzahlSpalten) {
@@ -49,7 +50,7 @@ public class Konfiguration {
 	
 	
 	/**
-	 * Gibt die Anzahl der Zeilen zurÃ¼ck.
+	 * Gibt die Anzahl der Zeilen zurück.
 	 * @return Anzahl Zeilen
 	 */
 	public int getAnzahlZeilen() {
@@ -58,7 +59,7 @@ public class Konfiguration {
 	
 	
 	/**
-	 * Die Anzahl der Zeilen des Spielfeld wird ausgewÃ¤hlt.
+	 * Die Anzahl der Zeilen des Spielfeld wird ausgewählt.
 	 * @param anzahlZeilen
 	 */
 	public void setAnzahlZeilen(int anzahlZeilen) {

@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Klasse "Spieler", die sÃ¤mtliche Informationen der Spieler enthÃ¤lt, 
+ * Klasse "Spieler", die sämtliche Informationen der Spieler enthält, 
  * auf die die Klasse "VierGewinnt" zugreift.
  * @author fabian.eiternik
  *
@@ -16,25 +16,25 @@ public class Spieler {
 	
 	
 	/**
-	 * Farbauswahl fÃ¼r Spieler 1 und Spieler 2.
+	 * Farbauswahl für Spieler 1 und Spieler 2.
 	 */
 	private String farbe;
-
+	
 	/**
 	 * das technische Zeichen des Spielers, 
-	 * das im Spielfeld fÃ¼r diesen Spieler benutzt werde soll.
+	 * das im Spielfeld für diesen Spieler benutzt werde soll.
 	 */
 	private int spielerZeichen;
-
 	
 	/**
 	 * Konstruktor um einen Spieler zu erzeugen
 	 * 
 	 * @param name Name des Spielers
 	 * @param farbe Farbe seiner Steine
-	 * @param spielerZeichen technisches Zeichen des Spielers, das im Spielfeld fÃ¼r diesen Spieler benutzt werde soll
+	 * @param spielerZeichen technisches Zeichen des Spielers, das im Spielfeld für diesen Spieler benutzt werde soll
 	 */
 	public Spieler(String name, String farbe, int spielerZeichen) {
+		super();
 		this.name = name;
 		this.farbe = farbe;
 		this.spielerZeichen = spielerZeichen;
@@ -42,7 +42,7 @@ public class Spieler {
 	
 	
 	/**
-	 * Gibt die Namen der Spieler zurÃ¼ck.
+	 * Gibt die Namen der Spieler zurück.
 	 * @return Name
 	 */
 	public String getName() {
@@ -60,7 +60,7 @@ public class Spieler {
 	
 	
 	/**
-	 * Gibt die Farbe der Spieler zurÃ¼ck.
+	 * Gibt die Farbe der Spieler zurück.
 	 * @return Farbe
 	 */
 	public String getFarbe() {
@@ -69,30 +69,29 @@ public class Spieler {
 	
 	
 	/**
-	 * Farben von Spieler 1 und Spieler 2 werden ausgewÃ¤hlt.
+	 * Farben von Spieler 1 und Spieler 2 werden ausgewählt.
 	 * @param farbe
 	 */
 	public void setFarbe(String farbe) {
 		this.farbe = farbe;
 	}
 
-
 	/**
-	 * Gibt das technische Zeichen des Spielers zurÃ¼ck, 
-	 * das im Spielfeld fÃ¼r diesen Spieler benutzt werde soll.
+	 * Gibt das technische Zeichen des Spielers zurück, 
+	 * das im Spielfeld für diesen Spieler benutzt werde soll.
 	 * @return Farbe
 	 */
 	public int getSpielerZeichen() {
 		return spielerZeichen;
 	}
 
-
 	/**
 	 * setzt das technische Zeichen des Spielers, 
-	 * das im Spielfeld fÃ¼r diesen Spieler benutzt werde soll.
+	 * das im Spielfeld für diesen Spieler benutzt werde soll.
 	 * @return Farbe
 	 */
 	public void setSpielerZeichen(int spielerZeichen) {
 		this.spielerZeichen = spielerZeichen;
 	}
+
 }
