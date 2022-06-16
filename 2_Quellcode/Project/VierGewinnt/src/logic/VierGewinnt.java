@@ -365,6 +365,10 @@ public class VierGewinnt {
 		}
 	}
 	
+	/**
+	 * Gettermethode, für den aktuellen Spieler.
+	 * @return aktueller Spieler
+	 */
 	public Spieler getAktuellerSpieler () {
 		return this.aktuellerSpieler;
 	}
