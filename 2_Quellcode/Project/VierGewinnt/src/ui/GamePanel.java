@@ -54,7 +54,7 @@ public class GamePanel extends JPanel implements MouseListener {
     			if(field.getValue() == FieldValue.EMPTY) {
     				
     				this.gameLogic.setzeZug(field.getCol());
-    				resetFields();
+    				resetAndRepaintFields();
     				checkWin();
     				this.gameLogic.spielerWechseln();
     				VierGewinnt.instance.nextPlayerTurn();
@@ -65,7 +65,7 @@ public class GamePanel extends JPanel implements MouseListener {
     	
     }
     
-    private void resetFields() {
+    private void resetAndRepaintFields() {
     	for(Field field : VierGewinnt.instance.getFields()) {
     		int fieldVal = this.gameLogic.getFieldValue(field.getCol(), field.getRow());
     		if(fieldVal == 1) {
