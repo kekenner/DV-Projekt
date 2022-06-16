@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements MouseListener {
     				resetFields();
     				checkWin();
     				this.gameLogic.spielerWechseln();
+    				VierGewinnt.instance.nextPlayerTurn();
     			}
     			break;
     		}
