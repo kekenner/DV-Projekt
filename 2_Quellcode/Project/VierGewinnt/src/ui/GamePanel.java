@@ -87,6 +87,7 @@ public class GamePanel extends JPanel implements MouseListener {
     		// Meldung "Spieler X hat Gewonnen" anzeigen
     		// ...
     		System.out.println("gewonnen!");
+    		
     	}
     }
 	
