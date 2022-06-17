@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class VierGewinnt {                           // Hauptklasse
 	
-	private FieldValue currentPlayer;
+	public FieldValue currentPlayer;
 	private ArrayList<Field> fields;                 // Arraylist die Daten vom Typ Field beinhaltet
 	
 	private Gamewindow window; 
@@ -22,7 +22,7 @@ public class VierGewinnt {                           // Hauptklasse
 		
 	}
 	
-	private void initGame() { 
+	public void initGame() { 
 		// Game Objekte
 		// PLayer
 		   currentPlayer = FieldValue.Spieler1;

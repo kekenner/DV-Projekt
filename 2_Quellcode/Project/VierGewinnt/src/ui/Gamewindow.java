@@ -34,11 +34,11 @@ public class Gamewindow extends JFrame {         // Gamewindow ist eine Tochterk
 		currentPlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		// Neustart Button
-		Neustart = new JButton("Neustart");
-		getContentPane().add(Neustart,BorderLayout.SOUTH);
-		Neustart.setHorizontalAlignment(SwingConstants.CENTER);
+		// Neustart = new JButton("Neustart");
+		// getContentPane().add(Neustart,BorderLayout.SOUTH);
+		// Neustart.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		setVisible(true);
+		 setVisible(true);
 		
 		
 	}
