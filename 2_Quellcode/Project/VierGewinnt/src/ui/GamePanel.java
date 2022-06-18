@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import logic.Konfiguration;
@@ -86,8 +87,11 @@ public class GamePanel extends JPanel implements MouseListener {
     		// Felder duerfen nicht mehr klickbar sein
     		// Meldung "Spieler X hat Gewonnen" anzeigen
     		// ...
-    		System.out.println("gewonnen!");
+    		JOptionPane.showMessageDialog(this, "Spieler " + VierGewinnt.instance.getcurrentPlayer().name()+ " hat Gewonnen!", "Game Over!",JOptionPane.INFORMATION_MESSAGE);
+    		VierGewinnt.instance.initGame();
     		
+    		
+    		repaint();
     	}
     }
 	
