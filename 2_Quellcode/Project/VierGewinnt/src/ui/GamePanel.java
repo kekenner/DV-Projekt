@@ -95,6 +95,16 @@ public class GamePanel extends JPanel implements MouseListener {
     		repaint();
     	}
     }
+    
+   // private void checkDraw() {
+   // 	if(this.gameLogic.Methodenname()) {
+   // 		JOptionPane.showMessageDialog(this, "Unentschieden :/ !", "Kein Gewinner!", JOptionPane.INFORMATION_MESSAGE);
+   // 		VierGewinnt.instance.initGame();
+   // 		this.resetGameLogic();
+   // 		
+   // 		repaint();
+   // 	}
+   // }
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
