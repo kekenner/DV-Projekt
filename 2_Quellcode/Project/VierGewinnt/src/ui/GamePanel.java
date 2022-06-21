@@ -23,6 +23,10 @@ public class GamePanel extends JPanel implements MouseListener {
 		setBackground(Color.WHITE);
 		requestFocus();
 		addMouseListener(this);
+		this.resetGameLogic();
+	}
+	
+	private void resetGameLogic() {
 		Konfiguration konf = new Konfiguration(7, 6);
 		this.spieler1 = new Spieler("dummy1","rot", 1);
 		this.spieler2 = new Spieler("dummy2","gruen", -1);
@@ -32,6 +36,7 @@ public class GamePanel extends JPanel implements MouseListener {
 				this.spieler2
 		);
 	}
+	
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -89,6 +94,7 @@ public class GamePanel extends JPanel implements MouseListener {
     		// ...
     		JOptionPane.showMessageDialog(this, "Spieler " + VierGewinnt.instance.getcurrentPlayer().name()+ " hat Gewonnen!", "Game Over!",JOptionPane.INFORMATION_MESSAGE);
     		VierGewinnt.instance.initGame();
+    		this.resetGameLogic();
     		
     		
     		repaint();
