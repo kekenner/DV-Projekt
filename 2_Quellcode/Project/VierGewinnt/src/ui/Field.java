@@ -33,7 +33,8 @@ public class Field extends Rectangle  {                               // Klasse 
 			g2d.setPaint(Color.YELLOW);
 			g2d.drawOval(x + 5, y + 5, width - 10, height - 10);
 			g2d.fillOval(x + 5, y + 5, width - 10, height - 10);
-		}
+			
+		} 
 	}
 	
 	

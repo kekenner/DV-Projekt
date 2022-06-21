@@ -16,7 +16,7 @@ public class VierGewinnt {                           // Hauptklasse
 	}
 
 	public VierGewinnt() {                            // Konstruktor
-		window = new Gamewindow(450, 510);            // Größe des Gamewindow wird festgelegt
+		window = new Gamewindow(650, 710);            // Größe des Gamewindow wird festgelegt
 		initGame();                                   // Methode initGame
 		
 		
@@ -28,10 +28,10 @@ public class VierGewinnt {                           // Hauptklasse
 		   currentPlayer = FieldValue.Spieler1;
 		   nextPlayerTurn();
 		// Fields   
-		int fieldsMarginLeft = 15;        // Abstand linker Rand in Pixel
-		int fieldsMarginTop = 11;         // Abstand oberer Rand in Pixel
-		int fieldWidth = 411/7;           // Breite geteilt durch 7 Spalten
-		int fieldHeight = 411/6;          // Höhe geteilt durch 6 Zeilen
+		int fieldsMarginLeft = 13;        // Abstand linker Rand in Pixel
+		int fieldsMarginTop = 120;         // Abstand oberer Rand in Pixel
+		int fieldWidth = 610/7;           // Breite geteilt durch 7 Spalten
+		int fieldHeight = 510/6;          // Höhe geteilt durch 6 Zeilen
 		
 		fields = new ArrayList<Field>();  // Fields Arraylist werden die Felder hinzugefügt
 		

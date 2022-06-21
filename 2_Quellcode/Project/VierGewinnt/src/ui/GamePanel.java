@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements MouseListener {
 	private Spieler spieler2;
 	
 	public GamePanel() {
-		setBackground(Color.WHITE);
+		setBackground(Color.BLUE);
 		requestFocus();
 		addMouseListener(this);
 		this.resetGameLogic();

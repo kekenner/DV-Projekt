@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
@@ -14,6 +15,8 @@ public class Gamewindow extends JFrame {         // Gamewindow ist eine Tochterk
 	private JLabel currentPlayerLabel;
 	
 	private JButton Neustart;
+	
+	private JTextField Spieler1; 
 	
 	public Gamewindow(int width, int height) {       // Konstruktor für das Gamewindow
 		
@@ -32,11 +35,6 @@ public class Gamewindow extends JFrame {         // Gamewindow ist eine Tochterk
 		currentPlayerLabel = new JLabel("Laden...");
 		getContentPane().add(currentPlayerLabel,BorderLayout.NORTH);
 		currentPlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		// Neustart Button
-		// Neustart = new JButton("Neustart");
-		// getContentPane().add(Neustart,BorderLayout.SOUTH);
-		// Neustart.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		 setVisible(true);
 		
