@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 public class Gamewindow extends JFrame {         // Gamewindow ist eine Tochterklasse von JFrame aus dem Javax.swing Paket
 	
 	private JLabel currentPlayerLabel;
+	private GamePanel gamePanel;
 	
 	public Gamewindow(int width, int height) {       // Konstruktor für das Gamewindow
 		
@@ -22,7 +23,7 @@ public class Gamewindow extends JFrame {         // Gamewindow ist eine Tochterk
 		setLayout(new BorderLayout());              // Border Layout festlegen
 		
 		
-		GamePanel gamePanel = new GamePanel();                                  // Klasse Gamepanel einfügen
+		gamePanel = new GamePanel();                                  // Klasse Gamepanel einfügen
 		getContentPane().add(gamePanel, BorderLayout.CENTER);                   // Platzierung des Gamepanels auf dem ContentPane in der Mitte
 		
 		// Label Spieler
@@ -38,5 +39,9 @@ public class Gamewindow extends JFrame {         // Gamewindow ist eine Tochterk
 	public void setCurrentPlayerLabelText(String s) {
 		currentPlayerLabel.setText(s);
 		
+	}
+
+	public GamePanel getGamePanel() {
+		return gamePanel;
 	}
 }

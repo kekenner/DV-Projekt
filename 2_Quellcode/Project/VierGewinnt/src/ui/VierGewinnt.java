@@ -15,9 +15,14 @@ public class VierGewinnt {                           // Hauptklasse
 	
 	public static void main(String[] args) {
 		instance = new VierGewinnt();
-		
+		instance.window.setCurrentPlayerLabelText("");
+
 		String spieler1 = JOptionPane.showInputDialog(null, "Wie heißt der erste Spieler?", "Spieler 1");
 		String spieler2 = JOptionPane.showInputDialog(null, "Wie heißt der zweite Spieler?", "Spieler 2");
+		instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);
+		instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);
+		instance.window.setCurrentPlayerLabelText("Aktueller Spieler ist " + spieler1);
+
 				
 	}
 
@@ -32,7 +37,6 @@ public class VierGewinnt {                           // Hauptklasse
 		// Game Objekte
 		// PLayer
 		   currentPlayer = FieldValue.Spieler1;
-		   nextPlayerTurn();
 		// Fields   
 		int fieldsMarginLeft = 13;        // Abstand linker Rand in Pixel
 		int fieldsMarginTop = 35;         // Abstand oberer Rand in Pixel
@@ -106,7 +110,7 @@ public class VierGewinnt {                           // Hauptklasse
 		}else {
 			currentPlayer = FieldValue.Spieler1;
 		}
-		window.setCurrentPlayerLabelText("Aktueller Spieler ist " + currentPlayer.name() + "!");
+		window.setCurrentPlayerLabelText("Aktueller Spieler ist " + window.getGamePanel().getGameLogic().getAktuellerSpieler().getName()+ "!");
 	}
 	
 	public FieldValue getcurrentPlayer() {              // Get methode für den aktuellen Spieler
