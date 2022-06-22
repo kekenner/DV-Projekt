@@ -28,8 +28,10 @@ public class GamePanel extends JPanel implements MouseListener {
 	
 	private void resetGameLogic() {
 		Konfiguration konf = new Konfiguration(7, 6);
-		this.spieler1 = new Spieler("dummy1","rot", 1);
-		this.spieler2 = new Spieler("dummy2","gruen", -1);
+		if(this.spieler1 == null) {
+			this.spieler1 = new Spieler("","rot", 1);
+			this.spieler2 = new Spieler("","gruen", -1);
+		}
 		gameLogic = new logic.VierGewinnt(
 				konf,
 				this.spieler1,
@@ -62,6 +64,7 @@ public class GamePanel extends JPanel implements MouseListener {
     				this.gameLogic.setzeZug(field.getCol());
     				resetAndRepaintFields();
     				checkWin();
+    				checkDraw();
     				this.gameLogic.spielerWechseln();
     				VierGewinnt.instance.nextPlayerTurn();
     			}
@@ -87,7 +90,7 @@ public class GamePanel extends JPanel implements MouseListener {
     
     private void checkWin() {
     	if(this.gameLogic.hatGewonnen()) {
-    		JOptionPane.showMessageDialog(this, "Spieler " + VierGewinnt.instance.getcurrentPlayer().name()+ " hat Gewonnen!", "Game Over!",JOptionPane.INFORMATION_MESSAGE);
+    		JOptionPane.showMessageDialog(this, "Spieler " + this.gameLogic.getAktuellerSpieler().getName() + " hat Gewonnen!", "Game Over!",JOptionPane.INFORMATION_MESSAGE);
     		VierGewinnt.instance.initGame();
     		this.resetGameLogic();
     		
@@ -96,15 +99,15 @@ public class GamePanel extends JPanel implements MouseListener {
     	}
     }
     
-   // private void checkDraw() {
-   // 	if(this.gameLogic.Methodenname()) {
-   // 		JOptionPane.showMessageDialog(this, "Unentschieden :/ !", "Kein Gewinner!", JOptionPane.INFORMATION_MESSAGE);
-   // 		VierGewinnt.instance.initGame();
-   // 		this.resetGameLogic();
-   // 		
-   // 		repaint();
-   // 	}
-   // }
+    private void checkDraw() {
+    	if(this.gameLogic.istUnentschieden()) {
+    		JOptionPane.showMessageDialog(this, "Unentschieden :/ !", "Kein Gewinner!", JOptionPane.INFORMATION_MESSAGE);
+    		VierGewinnt.instance.initGame();
+    		this.resetGameLogic();
+    		
+    		repaint();
+    	}
+    }
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -129,6 +132,10 @@ public class GamePanel extends JPanel implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		
+	}
+
+	public logic.VierGewinnt getGameLogic() {
+		return gameLogic;
 	}
 
 }

@@ -92,7 +92,28 @@ public class VierGewinnt {
 	
 	/**
 	 * Methode analysiert das Spielfeld - sind alle Spalten des Feldes mit Chips belegt, 
-	 * ist das Spiel vorbei und die Methode liefert "false". Ist der Spielzug gültig, geht 
+	 * ist das Spiel vorbei und die Methode liefert "false".
+	 * 
+	 * @return "true" - bei unentschieden, ansonsten "false".
+	 */
+	public boolean istUnentschieden() { 
+		//wir überprüfen die oberste Zeile, ob sie noch freie Plätze hat
+		//wenn nicht, dann ist das Spiel unentschieden
+		int obersteZeile = this.konfiguration.getAnzahlZeilen()-1;
+		int i = 0;
+		while(i < this.konfiguration.getAnzahlSpalten()) {
+			if(feld[i][obersteZeile] == 0) {
+				return false;
+			}
+			i++;
+		}
+		return true;
+	}
+	
+	
+	/**
+	 * Methode analysiert das Spielfeld - ist das oberste Feld der übergebenen Spalten mit einem Chip belegt, 
+	 * ist der Zug ungültig und die Methode liefert "false". Ist der Spielzug gültig, geht 
 	 * das Spiel weiter.
 	 *
 	 * @param spalte - Spaltennummer, in die der Stein eingeworfen wurde

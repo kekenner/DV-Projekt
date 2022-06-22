@@ -22,7 +22,7 @@ public class Spieler {
 	
 	/**
 	 * das technische Zeichen des Spielers, 
-	 * das im Spielfeld für diesen Spieler benutzt werde soll.
+	 * das im Spielfeld für diesen Spieler benutzt werden soll.
 	 */
 	private int spielerZeichen;
 	
