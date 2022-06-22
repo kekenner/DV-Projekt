@@ -2,6 +2,8 @@ package ui;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class VierGewinnt {                           // Hauptklasse
 	
 	private FieldValue currentPlayer;
@@ -13,10 +15,14 @@ public class VierGewinnt {                           // Hauptklasse
 	
 	public static void main(String[] args) {
 		instance = new VierGewinnt();
+		
+		String spieler1 = JOptionPane.showInputDialog(null, "Wie heißt der erste Spieler?", "Spieler 1");
+		String spieler2 = JOptionPane.showInputDialog(null, "Wie heißt der zweite Spieler?", "Spieler 2");
+				
 	}
 
 	public VierGewinnt() {                            // Konstruktor
-		window = new Gamewindow(650, 710);            // Größe des Gamewindow wird festgelegt
+		window = new Gamewindow(650,650);            // Größe des Gamewindow wird festgelegt
 		initGame();                                   // Methode initGame
 		
 		
@@ -29,7 +35,7 @@ public class VierGewinnt {                           // Hauptklasse
 		   nextPlayerTurn();
 		// Fields   
 		int fieldsMarginLeft = 13;        // Abstand linker Rand in Pixel
-		int fieldsMarginTop = 120;         // Abstand oberer Rand in Pixel
+		int fieldsMarginTop = 35;         // Abstand oberer Rand in Pixel
 		int fieldWidth = 610/7;           // Breite geteilt durch 7 Spalten
 		int fieldHeight = 510/6;          // Höhe geteilt durch 6 Zeilen
 		
