@@ -56,6 +56,7 @@ public class Netzwerk_gesamt implements Runnable{
 		
 		if (!connect()) initializeServer();
 		
+		//Gamewindow erstellen.
 		
 		thread = new Thread(this, "Netzwerk_gesamt");
 		thread.start();
@@ -70,7 +71,7 @@ public class Netzwerk_gesamt implements Runnable{
 	public void run() {
 		
 		while (true) {
-			//setzeZug() mit Variable dis ;
+			//setzeZug() mit Variable dis, die die Informationen (Position des Steins) enthält;
 			//repaint();
 			if (!accepted) listenForServerRequest();
 		}
@@ -118,7 +119,7 @@ public class Netzwerk_gesamt implements Runnable{
 	}
 	
 	/**
-	 * Methode initializeServer 
+	 * Methode initializeServer erstellt einen Server wenn noch keine Verbindung besteht. Server wird im Konstruktor erstellt.
 	 * 
 	 * @author Marven Schwarz, Kevin Kenner
 	 * @version 1.0 2022-06-22
@@ -136,6 +137,6 @@ public class Netzwerk_gesamt implements Runnable{
 		Netzwerk_gesamt netzwerk = new Netzwerk_gesamt();
 	}
 	
-	//Hier muss unserem Verständnis nach die Klasse GamePanel eingefügt werden, da diese Klasse die Methode mouseClicked beinhaltet. In der Methode mouseClicked wird die Position an der 
+	//Hier muss unserem Verständnis nach die Klasse GamePanel bzw Gamewindow eingefügt werden, da diese Klasse die Methode mouseClicked beinhaltet. In der Methode mouseClicked wird die Position an der 
 	//der Stein eingeworfen wurde in die Variable dos geschrieben und mit dos.flush() an den dis in der Methode setzeZug() gesendet.
 }
