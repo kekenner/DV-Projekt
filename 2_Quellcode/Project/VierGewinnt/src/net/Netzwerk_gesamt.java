@@ -20,7 +20,7 @@ public class Netzwerk_gesamt implements Runnable{
 
 	
 	private String ip = "localhost";
-	private int port = 25000;
+	private final int port = 25000;
 	private Scanner scanner = new Scanner(System.in);
 	private Thread thread;
 
@@ -47,12 +47,12 @@ public class Netzwerk_gesamt implements Runnable{
 
 		System.out.println("Bitte geben Sie die IP Adresse ein: ");
 		ip = scanner.nextLine();
-		System.out.println("Bitte geben Sie den Port ein: ");
-		port = scanner.nextInt();
-		while (port < 1 || port > 65535) {
-			System.out.println("Der eingegebene Port ist nicht erreichbar. Bitte geben Sie einen anderen Port ein:");
-			port = scanner.nextInt();
-		}
+//		System.out.println("Bitte geben Sie den Port ein: ");
+//		port = scanner.nextInt();
+//		while (port < 1 || port > 65535) {
+//			System.out.println("Der eingegebene Port ist nicht erreichbar. Bitte geben Sie einen anderen Port ein:");
+//			port = scanner.nextInt();
+//		}
 		
 		if (!connect()) initializeServer();
 		
