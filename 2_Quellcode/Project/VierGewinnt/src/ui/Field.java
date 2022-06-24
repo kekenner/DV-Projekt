@@ -12,19 +12,30 @@ import java.awt.Rectangle;
  * @author mariusmauth SimonFluck
  * 
  */
-public class Field extends Rectangle  {                               // Klasse Field ist eine Tochterklasse der Klasse Rectangle
-
-	private FieldValue value;                                         // Werte des Feldes werden durch ein Enum gespeichert, Datentyp ist nichtmehr int oder anderes, sondern vom Datentyp value
+public class Field extends Rectangle  {                               
+	private FieldValue value;                                         // Werte des Feldes werden durch ein Enum gespeichert
 	private int col;
 	private int row;
 	
-	public Field(int x, int y, int width, int height, int col, int row) {               // Konstruktor der Klasse Field
-		super(x, y, width, height);                                   // Konstruktor der Vorgängerklasse wird aufgerufen
+	/**
+	 * Konstruktor der Klasse Field
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param col
+	 * @param row
+	 */
+	public Field(int x, int y, int width, int height, int col, int row) {               
+		super(x, y, width, height);                                   
 		value = FieldValue.EMPTY;                                     // Standardmäßig ist das Feld vor dem anklicken empty
 		this.col = col;
 		this.row = row;
 	}
-
+	/**
+	 * Methode "draw" erstellt Rahmen und Symbole
+	 * @param g2d
+	 */
 	public void draw(Graphics2D g2d) {
 		// Rahmen Zeichnen 
 		g2d.setColor(Color.BLACK);Color c;
@@ -45,20 +56,35 @@ public class Field extends Rectangle  {                               // Klasse 
 		} 
 	}
 	
-	
-	public FieldValue getValue() {                   // get Methode für den value
+	/**
+	 * get Methode für den value
+	 * @return
+	 */
+	public FieldValue getValue() {                   
 		return value;
 	}
-
-	public void setValue(FieldValue value) {         // set Methode für den value
+	
+	/**
+	 * set Methode für den value 
+	 * @param value
+	 */
+	public void setValue(FieldValue value) {         
 		this.value = value;
 	}
-
-	public int getCol() {         					 // get Methode für die Spalte
+	
+	/**
+	 * get Methode für die Spalte
+	 * @return
+	 */
+	public int getCol() {         					 
 		return col;
 	}
-
-	public int getRow() {         					 // get Methode für die Zeile
+	
+	/**
+	 * get Methode für die Zeile
+	 * @return
+	 */
+	public int getRow() {         					 
 		return row;
 	}
 

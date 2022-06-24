@@ -8,7 +8,11 @@ import javax.swing.JOptionPane;
 
 import net.MeinServerTest;
 
-public class VierGewinnt { // Hauptklasse
+/**
+ * "VierGewinnt" ist die Hauptklasse der GUI
+ * @author SimonFluck, mariusmauth
+ */
+public class VierGewinnt { 
 
 	private FieldValue currentPlayer;
 	private ArrayList<Field> fields; // Arraylist die Daten vom Typ Field beinhaltet
@@ -43,18 +47,22 @@ public class VierGewinnt { // Hauptklasse
 
 		instance.window.setCurrentPlayerLabelText("");
 	}
-
-	public VierGewinnt() { // Konstruktor
+	
+	/**
+	 * Konstruktor der Klasse "VierGewinnt" mit der Methode "initGame"
+	 */
+	public VierGewinnt() { 
 		window = new Gamewindow(650, 650); // Größe des Gamewindow wird festgelegt
-		initGame(); // Methode initGame
+		initGame(); 
 
 	}
-
+	/**
+	 * Methode "initGame" platziert das Spielfeld und unterteilt es in 42 einzelne Felder. 
+	 */
 	public void initGame() {
-		// Game Objekte
-		// PLayer
+		
 		currentPlayer = FieldValue.Spieler1;
-		// Fields
+		
 		int fieldsMarginLeft = 13; // Abstand linker Rand in Pixel
 		int fieldsMarginTop = 35; // Abstand oberer Rand in Pixel
 		int fieldWidth = 610 / 7; // Breite geteilt durch 7 Spalten
@@ -70,7 +78,8 @@ public class VierGewinnt { // Hauptklasse
 		fields.add(new Field(fieldsMarginLeft + 4 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 4, 5));
 		fields.add(new Field(fieldsMarginLeft + 5 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 5, 5));
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 6, 5));
-
+		
+		// Erzeugen der Felder der zweiten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 1 * fieldHeight, fieldWidth, fieldHeight, 0, 4));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 1 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 4));
@@ -84,7 +93,8 @@ public class VierGewinnt { // Hauptklasse
 				fieldHeight, 5, 4));
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 1 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 4));
-
+		
+		// Erzeugen der Felder der dritten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 2 * fieldHeight, fieldWidth, fieldHeight, 0, 3));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 2 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 3));
@@ -98,7 +108,8 @@ public class VierGewinnt { // Hauptklasse
 				fieldHeight, 5, 3));
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 2 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 3));
-
+		
+		// Erzeugen der Felder der vierten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 3 * fieldHeight, fieldWidth, fieldHeight, 0, 2));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 3 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 2));
@@ -112,7 +123,8 @@ public class VierGewinnt { // Hauptklasse
 				fieldHeight, 5, 2));
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 3 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 2));
-
+		
+		// Erzeugen der Felder der fünften Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 4 * fieldHeight, fieldWidth, fieldHeight, 0, 1));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 4 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 1));
@@ -126,7 +138,8 @@ public class VierGewinnt { // Hauptklasse
 				fieldHeight, 5, 1));
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 4 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 1));
-
+		
+		// Erzeugen der Felder der sechsten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 5 * fieldHeight, fieldWidth, fieldHeight, 0, 0));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 5 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 0));
@@ -142,8 +155,12 @@ public class VierGewinnt { // Hauptklasse
 				fieldHeight, 6, 0));
 
 	}
-
-	public void nextPlayerTurn() { // Methode die, Reihenfolge der Spieler festlegt
+	
+	/**
+	 * Die Methode "nextPlayerTurn" legt Reihenfolge der Spieler fest.
+	 * Zeigt an welcher Spieler gerade am Zug ist.
+	 */
+	public void nextPlayerTurn() { 
 		if (currentPlayer == FieldValue.Spieler1) {
 			currentPlayer = FieldValue.Spieler2;
 
@@ -153,13 +170,21 @@ public class VierGewinnt { // Hauptklasse
 		window.setCurrentPlayerLabelText(
 				"Spieler " + window.getGamePanel().getGameLogic().getAktuellerSpieler().getName() + " ist am Zug!");
 	}
-
-	public FieldValue getcurrentPlayer() { // Get methode für den aktuellen Spieler
+	
+	/**
+	 * Get methode für den aktuellen Spieler
+	 * @return
+	 */
+	public FieldValue getcurrentPlayer() { 
 		return currentPlayer;
 
 	}
 
-	public ArrayList<Field> getFields() { // Get Methode für das aktuelle Feld
+	/**
+	 * Get Methode für das aktuelle Feld
+	 * @return
+	 */
+	public ArrayList<Field> getFields() { 
 		return fields;
 	}
 }
