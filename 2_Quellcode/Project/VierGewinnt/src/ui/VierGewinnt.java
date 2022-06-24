@@ -121,7 +121,7 @@ public class VierGewinnt {                           // Hauptklasse
 		}else {
 			currentPlayer = FieldValue.Spieler1;
 		}
-		window.setCurrentPlayerLabelText("Aktueller Spieler ist " + window.getGamePanel().getGameLogic().getAktuellerSpieler().getName()+ "!");
+		window.setCurrentPlayerLabelText("Spieler " + window.getGamePanel().getGameLogic().getAktuellerSpieler().getName()+ " ist am Zug!");
 	}
 	
 	public FieldValue getcurrentPlayer() {              // Get methode für den aktuellen Spieler
