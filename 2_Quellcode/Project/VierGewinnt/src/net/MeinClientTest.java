@@ -15,10 +15,10 @@ public class MeinClientTest {
 	private PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
 	private Scanner sc = new Scanner(System.in);
 	
-	public void connect() {
+	public void connect(String IPAdresse) {
 	try
 	{
-		clientSocket = new Socket("192.168.2.39", 25000); // Socket des Client deklarieren. Dieser bekommt die
+		clientSocket = new Socket(IPAdresse, 25000); // Socket des Client deklarieren. Dieser bekommt die
 															// IP-Adresse des Server und den Port übergeben.
 		out = new PrintWriter(clientSocket.getOutputStream());
 		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
