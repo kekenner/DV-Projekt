@@ -38,7 +38,8 @@ public class VierGewinnt { // Hauptklasse
 			                "Warten auf Gegenspieler...",
 			                "Du wirst benachrichtigt sobald dein Gegenspeieler eingetroffen ist!",
 			                JOptionPane.INFORMATION_MESSAGE);
-			} else {
+			} 
+			else if (!server.isText()) {
 				JOptionPane.showMessageDialog(null,
 		                "Gegenspieler Gefunden!",
 		                "Klicke auf OK um fortzufahren!",
