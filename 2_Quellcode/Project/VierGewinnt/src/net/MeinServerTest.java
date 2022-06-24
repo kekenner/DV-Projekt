@@ -8,6 +8,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class MeinServerTest {
 
 	private ServerSocket serverSocket; // serverSocket hört auf Verbindungsanfragen des Clients
@@ -16,19 +18,20 @@ public class MeinServerTest {
 	private BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
 	private PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
 	private Scanner sc = new Scanner(System.in);
-	private boolean text = false;
 
 	public void connect() {
 	try
 	{
 		serverSocket = new ServerSocket(25000); // Wird verwendet um auf Verbindungsanforderungen vom Client zu hören.
 		System.out.println("Server wartet auf eine Verbindungsanfrage des Client...");
-		text = true;
+		JOptionPane.showMessageDialog(null,
+                "Warten auf Gegenspieler...",
+                "Du wirst benachrichtigt sobald dein Gegenspeieler eingetroffen ist!",
+                JOptionPane.INFORMATION_MESSAGE);
 		clientSocket = serverSocket.accept(); // Der Server Socket verwendet die Methode accept() um auf eine
 												// Anforderung des Client zu warten. Sobald er eine erhält, akzeptiert
 												// er sie und erstellt eine Instanz der Socket Klasse.
 		System.out.println("Der Server ist mit dem Client verbunden.");
-		text = false;
 		out = new PrintWriter(clientSocket.getOutputStream()); // Instanziieren von out. getOutputStream ist ein
 																// Ausgabestrom für den clientSocket, da dieser für das
 																// Senden der Daten an den Client verantwortlich ist.
@@ -86,10 +89,5 @@ public class MeinServerTest {
 		});
 		receive.start();
 	}
-
-	public boolean isText() {
-		return text;
-	}
-	
 	
 }

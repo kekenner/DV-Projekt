@@ -30,28 +30,18 @@ public class VierGewinnt { // Hauptklasse
 		if (n == JOptionPane.NO_OPTION) {
 			String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die Server ID ein!", "Server ID");
 			client.connect(serverID);
+			String spieler2 = JOptionPane.showInputDialog(null, "Wie heiﬂt der zweite Spieler?","Dein Name");
 		} else if (n == JOptionPane.YES_OPTION) {
 			server.connect();
-			
-			if (server.isText()) {
-			JOptionPane.showMessageDialog(null,
-			                "Warten auf Gegenspieler...",
-			                "Du wirst benachrichtigt sobald dein Gegenspeieler eingetroffen ist!",
-			                JOptionPane.INFORMATION_MESSAGE);
-			} 
-			else if (!server.isText()) {
-				JOptionPane.showMessageDialog(null,
-		                "Gegenspieler Gefunden!",
-		                "Klicke auf OK um fortzufahren!",
-		                JOptionPane.INFORMATION_MESSAGE);
-			}
+			JOptionPane.showMessageDialog(null,"Gegenspieler Gefunden!","Klicke auf OK um fortzufahren!",JOptionPane.INFORMATION_MESSAGE);
+			String spieler1 = JOptionPane.showInputDialog(null, "Wie heiﬂt der erste Spieler?", "Dein Name");
 		}
 
 
 		instance.window.setCurrentPlayerLabelText("");
 
-		String spieler1 = JOptionPane.showInputDialog(null, "Wie heiﬂt der erste Spieler?", "Spieler 1");
-		String spieler2 = JOptionPane.showInputDialog(null, "Wie heiﬂt der zweite Spieler?","Spieler 2");
+		
+		
 		instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);
 		instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);
 		instance.window.setCurrentPlayerLabelText("Aktueller Spieler ist "+spieler1);
