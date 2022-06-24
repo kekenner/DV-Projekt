@@ -84,7 +84,15 @@ public class GamePanel extends JPanel implements MouseListener {
     			if(field.getValue() == FieldValue.EMPTY) {
     				
     				this.gameLogic.setzeZug(field.getCol());
-    				resetAndRepaintFields();
+    				resetAndRepaintFields();					//Reihenfolge:	1. Spalte in die der Server Spieler ein Steinchen rein geworfen hat wird zum Client geschickt.
+																//				2. setzeZug(field.getCol) wird ausgeführt.
+																//				3. Fenster wird für den Server Spieler gesperrt.
+																//				4. Antwort des Client Spielers kommt.
+																//				5. spieler.Wechslen wird ausgeführt.
+																//    			6. Zug des Client Spielers setzen.
+																//				7. spieler.Wechslen wird ausgeführt.
+																//				8. Fenster wird für Server Spieler freigegeben.--> von vorne
+    				
     				checkWin();
     				checkDraw();
     				this.gameLogic.spielerWechseln();
