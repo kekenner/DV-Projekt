@@ -29,7 +29,7 @@ public class VierGewinnt { // Hauptklasse
 				options[0]);
 		if (n == JOptionPane.NO_OPTION) {
 			String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die Server ID ein!", "Server ID");
-			client.connect(); //in die Klammern muss die IP Adresse als String übergeben werden.
+			client.connect(serverID);
 		} else if (n == JOptionPane.YES_OPTION) {
 			server.connect();
 			if (server.isText()) {
