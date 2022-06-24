@@ -17,15 +17,17 @@ public class VierGewinnt {                           // Hauptklasse
 	public static void main(String[] args) {
 		instance = new VierGewinnt();
 	
-		Object[] options = {"Server","Client"};
+	    Object[] options = {"Server","Client"};
         Component frame = null;
 		int n = JOptionPane.showOptionDialog(frame,"Bitte w‰hle, ob du Server oder Client bist!"," Server/Client Auswahl!",
         JOptionPane.YES_NO_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,     
+        JOptionPane.QUESTION_MESSAGE, null,     
         options,  
         options[0]); 
-		
+                if (n == JOptionPane.NO_OPTION) {
+                	String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die Server ID ein!", "Server ID");
+                }
+        
 		instance.window.setCurrentPlayerLabelText("");
 
 		String spieler1 = JOptionPane.showInputDialog(null, "Wie heiﬂt der erste Spieler?", "Spieler 1");
