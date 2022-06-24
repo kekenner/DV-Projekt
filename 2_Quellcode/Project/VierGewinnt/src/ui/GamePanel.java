@@ -13,6 +13,14 @@ import javax.swing.JPanel;
 import logic.Konfiguration;
 import logic.Spieler;
 
+/**
+ * Die Klasse GamePanel ist eine Tochterklasse der Java Klasse JPanel und implementiert den MouseListener.
+ * Sie enthält die Methoden resetGameLogic, PaintComponent, checkField, resetandrepaintFields, checkWin und CheckDraw.
+ * Diese Klasse ist mit der Spiellogik verknüpft.
+ * 
+ * @author mariusmauth SimonFluck
+ *
+ */
 public class GamePanel extends JPanel implements MouseListener {
 	
 	private logic.VierGewinnt gameLogic;
@@ -26,6 +34,10 @@ public class GamePanel extends JPanel implements MouseListener {
 		this.resetGameLogic();
 	}
 	
+	
+	/**
+	 * Methode resetGameLogic
+	 */
 	private void resetGameLogic() {
 		Konfiguration konf = new Konfiguration(7, 6);
 		if(this.spieler1 == null) {
@@ -39,14 +51,16 @@ public class GamePanel extends JPanel implements MouseListener {
 		);
 	}
 	
+	/**
+	 * Methode paintComponent. Diese Methode zeichnet sowohl die Felder, als auch auch die Spielsteine.
+	 */
+	
     @Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		// Unsere eigenen Zeichnungen
 		Graphics2D g2d = (Graphics2D) g; 
 		
-		// Felder Zeichnen
 	for(Field field : VierGewinnt.instance.getFields()) {
 		field.draw(g2d);
 	}
@@ -54,6 +68,14 @@ public class GamePanel extends JPanel implements MouseListener {
 		
 	}
     
+    /**
+     * Methode checkField. Diese Methode überprüft den Wert eines neu angeklickten Feldes.
+     * Hat das angeklickte Feld den Wert "EMPTY" wird erst der Spielstein im Feld platziert, dannach werden
+     * die Methoden resetAndRepaintFields, checkWin, checkDraw, spielerWechseln und nextPlayerTurn aufgerufen.
+     * 
+     * @param x
+     * @param y
+     */
     private void checkField(int x, int y) {
     	Rectangle cursorHitbox = new Rectangle(x, y, 1, 1);
     	for(Field field : VierGewinnt.instance.getFields()) {
@@ -74,6 +96,10 @@ public class GamePanel extends JPanel implements MouseListener {
     	
     }
     
+    /**
+     * Methode resetAndRepaintFields. Die Methode zeichnet nach jedem ausgeführten Zug das Spielfeld neu, somit wird der neu 
+     * gesetzte Spielstein angezeigt.
+     */
     private void resetAndRepaintFields() {
     	for(Field field : VierGewinnt.instance.getFields()) {
     		int fieldVal = this.gameLogic.getFieldValue(field.getCol(), field.getRow());
@@ -88,6 +114,9 @@ public class GamePanel extends JPanel implements MouseListener {
     	repaint();
     }
     
+    /**
+     * Methode checkWin. Die Methode checkWin greift auf die Methode hatGeewonnen zu, und gibt ein Tectfeld mit dem Sieger aus.
+     */
     private void checkWin() {
     	if(this.gameLogic.hatGewonnen()) {
     		JOptionPane.showMessageDialog(this, "Spieler " + this.gameLogic.getAktuellerSpieler().getName() + " hat Gewonnen!", "Game Over!",JOptionPane.INFORMATION_MESSAGE);
@@ -99,6 +128,10 @@ public class GamePanel extends JPanel implements MouseListener {
     	}
     }
     
+    /**
+     * Methode checkDraw. Die Methode checkDraw greift auf die Methode istUnentschieden zu und gibt ein Textfeld mit der 
+     * Benachrichtung "Unentschieden" aus.
+     */
     private void checkDraw() {
     	if(this.gameLogic.istUnentschieden()) {
     		JOptionPane.showMessageDialog(this, "Unentschieden :/ !", "Kein Gewinner!", JOptionPane.INFORMATION_MESSAGE);
@@ -109,6 +142,9 @@ public class GamePanel extends JPanel implements MouseListener {
     	}
     }
 	
+    /**
+     * Methode mouseClicked. Erkennt in welches Feld die Maus geklickt hat.
+     */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		checkField(e.getX(), e.getY());

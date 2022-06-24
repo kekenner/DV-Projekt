@@ -33,9 +33,15 @@ public class VierGewinnt { // Hauptklasse
 		} else if (n == JOptionPane.YES_OPTION) {
 			server.connect();
 			if (server.isText()) {
-				// hier Label einfügen: "Warten auf Gegenspieler..."
+			void z =  JOptionPane.showMessageDialog(null,
+			                "Warten auf Gegenspieler...",
+			                "Du wirst benachrichtigt sobald dein Gegenspeieler eingetroffen ist!",
+			                JOptionPane.INFORMATION_MESSAGE);
 			} else {
-				// Label deaktivieren
+				JOptionPane.showMessageDialog(null,
+		                "Gegenspieler Gefunden!",
+		                "Klicke auf OK um fortzufahren!",
+		                JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 
