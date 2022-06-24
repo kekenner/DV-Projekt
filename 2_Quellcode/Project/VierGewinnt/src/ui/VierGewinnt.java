@@ -30,22 +30,18 @@ public class VierGewinnt { // Hauptklasse
 		if (n == JOptionPane.NO_OPTION) {
 			String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die Server ID ein!", "Server ID");
 			client.connect(serverID);
-			String spieler2 = JOptionPane.showInputDialog(null, "Wie heiﬂt der zweite Spieler?","Dein Name");
+			String spieler2 = JOptionPane.showInputDialog(null, "Gib deinen Name ein:","Dein Name");
+			instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);
 		} else if (n == JOptionPane.YES_OPTION) {
 			server.connect();
 			JOptionPane.showMessageDialog(null,"Gegenspieler Gefunden!","Klicke auf OK um fortzufahren!",JOptionPane.INFORMATION_MESSAGE);
-			String spieler1 = JOptionPane.showInputDialog(null, "Wie heiﬂt der erste Spieler?", "Dein Name");
+			String spieler1 = JOptionPane.showInputDialog(null, "Gib deinen Name ein:", "Dein Name");
+			instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);
+			instance.window.setCurrentPlayerLabelText("Aktueller Spieler ist "+spieler1);
 		}
 
 
 		instance.window.setCurrentPlayerLabelText("");
-
-		
-		
-		instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);
-		instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);
-		instance.window.setCurrentPlayerLabelText("Aktueller Spieler ist "+spieler1);
-
 	}
 
 	public VierGewinnt() { // Konstruktor
