@@ -32,8 +32,9 @@ public class VierGewinnt { // Hauptklasse
 			client.connect(serverID);
 		} else if (n == JOptionPane.YES_OPTION) {
 			server.connect();
+			
 			if (server.isText()) {
-			void z =  JOptionPane.showMessageDialog(null,
+			JOptionPane.showMessageDialog(null,
 			                "Warten auf Gegenspieler...",
 			                "Du wirst benachrichtigt sobald dein Gegenspeieler eingetroffen ist!",
 			                JOptionPane.INFORMATION_MESSAGE);
@@ -46,11 +47,13 @@ public class VierGewinnt { // Hauptklasse
 		}
 
 
-	instance.window.setCurrentPlayerLabelText("");
+		instance.window.setCurrentPlayerLabelText("");
 
-	String spieler1 = JOptionPane.showInputDialog(null, "Wie heiﬂt der erste Spieler?", "Spieler 1");
-	String spieler2 = JOptionPane.showInputDialog(null, "Wie heiﬂt der zweite Spieler?",
-			"Spieler 2");instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);instance.window.setCurrentPlayerLabelText("Aktueller Spieler ist "+spieler1);
+		String spieler1 = JOptionPane.showInputDialog(null, "Wie heiﬂt der erste Spieler?", "Spieler 1");
+		String spieler2 = JOptionPane.showInputDialog(null, "Wie heiﬂt der zweite Spieler?","Spieler 2");
+		instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);
+		instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);
+		instance.window.setCurrentPlayerLabelText("Aktueller Spieler ist "+spieler1);
 
 	}
 
