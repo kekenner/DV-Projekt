@@ -10,6 +10,11 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Die Klasse MeinServerTest umfasst die Serverseite der Netzwerkanwendung mit den Methoden connect(); send(String spalte) und empfange().
+ * 
+ * @author Marven Schwarz, Kevin Kenner
+ */
 public class MeinServerTest {
 
 	private ServerSocket serverSocket; // serverSocket hï¿½rt auf Verbindungsanfragen des Clients
@@ -17,9 +22,17 @@ public class MeinServerTest {
 								// Client zu empfangen.
 	public BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
 	public PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
-	private Scanner sc = new Scanner(System.in);
 	private int spalte;
-
+	
+	/**
+	 * Die Methode connect() der Serverseite erzeugt einen neuen ServerSocket. Dieser Socket ist für die Verbindung zwischen Server und Client verantwortlich.
+	 * Wenn eine Verbindungsanfrage vom Client kommt wird diese über die accept() Methode akzeptiert. Ab diesem Zeitpunkt besteht eine Verbindung zwischen
+	 * Server und Client.
+	 * Der clientSocket ist der Socket über den Daten zwischen Server und Client gesendet und empfangen werden.
+	 * Außerdem wird out als ein Objekt der Klasse PrintWriter initialisiert. PrintWriter ist ein Ausgabestrom für den clientSocket.
+	 * Das Attribut in wird als Objekt der Klasse BufferedReader initialisiert. Der BufferedReader ist der Eingabestrom, der die eingegebenen Daten in
+	 * ein nutzbares Format umwandelt.
+	 */
 	public void connect() {
 	try
 	{
@@ -49,56 +62,20 @@ public class MeinServerTest {
 			}
 	}
 	
-//	public void send_old(String Spalte) {
-//		Thread sender = new Thread(new Runnable() { // Hier werden Daten vom Benutzer (der Eingabe) gelesen und an den
-//													// Client gesendet
-//			
-//			@Override
-//			public void run() {
-//
-//					out.println(Spalte); // schreibt die Daten in den clientSocket
-//					out.flush(); // sendet die Daten an den Client
-//					System.out.println("Data send.");
-//		
-//			}
-//		});
-//		sender.start();
-//	}
-	
+	/**
+	 * In der Methode send() wird die übergebene Spaltennummer in den clientSocket geschrieben und anschließend gesendet.
+	 * @param String Spalte
+	 */
 	public void send(String Spalte) {
-		out.println(Spalte); // schreibt die Daten in den clientSocket
-		out.flush(); // sendet die Daten an den Client
+		out.println(Spalte); 
+		out.flush(); 
 	}
 	
-//	public int empfange_old() {
-//		
-//		Thread receive = new Thread(new Runnable() {
-//			String col;
-//			
-//			@Override
-//			public void run() {
-//				try {
-//					col = in.readLine();
-//					while (col != null) {
-//						//System.out.println("Client: " + msg);
-//						col = in.readLine();
-//						spalte = Integer.parseInt(col);
-//						System.out.println(spalte);
-//					}
-//					System.out.println("Client ist nicht mehr verbunden.");
-//
-//					// out.close();
-//					// clientSocket.close();
-//					// serverSocket.close();
-//				} catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//		receive.start();
-//		return spalte;
-//	}
-	
+	/**
+	 * In der Methode empfange wird ausgelesen ob im BufferedReader Daten enthalten sind. Da wir die Spaltennummer als String versenden
+	 * wird der String in eine Integer umgewandelt und als Rückgabewert zurückgegeben.
+	 * @return int spalte
+	 */
 	public int empfange() {
 
 		String col;
