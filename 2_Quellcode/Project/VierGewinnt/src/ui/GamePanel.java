@@ -16,10 +16,12 @@ import logic.Spieler;
 
 /**
  * Die Klasse GamePanel ist eine Tochterklasse der Java Klasse JPanel und implementiert den MouseListener.
- * Sie enthält die Methoden resetGameLogic, PaintComponent, checkField, resetandrepaintFields, checkWin und CheckDraw.
+ * Sie enthält die Methoden resetGameLogic, PaintComponent, checkField, handleOtherPlayerMove, sendColumnToOtherPlayer, enableGameField, disableGameField, 
+ * resetandrepaintFields, checkWin und CheckDraw.
  * Diese Klasse ist mit der Spiellogik verknüpft.
  * 
- * @author mariusmauth SimonFluck
+ * @author Marius Mauth, Simon Fluck
+ * @edit Marven Schwarz, Kevin Kenner
  *
  */
 public class GamePanel extends JPanel implements MouseListener {
@@ -38,7 +40,8 @@ public class GamePanel extends JPanel implements MouseListener {
 	
 	
 	/**
-	 * Methode resetGameLogic
+	 * Die Methode resetGameLogic erzeugt nach der Standartkonfiguration ein neues Spielfeld. Wenn bereits ein Spiel gespielt wurde,
+	 * wird das Spielfeld nur geleert, sodass das Spiel von vorne losgehen kann.
 	 */
 	private void resetGameLogic() {
 		Konfiguration konf = new Konfiguration(7, 6);
@@ -54,7 +57,7 @@ public class GamePanel extends JPanel implements MouseListener {
 	}
 	
 	/**
-	 * Methode paintComponent. Diese Methode zeichnet sowohl die Felder, als auch auch die Spielsteine.
+	 * Methode paintComponent. Diese Methode zeichnet sowohl die Felder, als auch die Spielsteine.
 	 */
 	
     @Override
@@ -72,11 +75,12 @@ public class GamePanel extends JPanel implements MouseListener {
     
     /**
      * Methode checkField. Diese Methode überprüft den Wert eines neu angeklickten Feldes.
-     * Hat das angeklickte Feld den Wert "EMPTY" wird erst der Spielstein im Feld platziert, dannach werden
-     * die Methoden resetAndRepaintFields, checkWin, checkDraw, spielerWechseln und nextPlayerTurn aufgerufen.
+     * Hat das angeklickte Feld den Wert "EMPTY" wird erst der Spielstein im Feld platziert, danach wird das Spielfeld aktualisiert, auf Sieg oder
+     * Unentschieden überprüft, der Spielerwechsel gemacht, das Spielfeld für den Spieler der gerade einen Zug gemacht hat gesperrt,
+     * die Spaltennummer an den Gegner gesendet und die Methode handleOtherPlayerMove zum Umgang mit einem gegnerischen Zug aufgerufen.
      * 
-     * @param x
-     * @param y
+     * @param int x
+     * @param int y
      */
 	private void checkField(int x, int y) {
 		Rectangle cursorHitbox = new Rectangle(x, y, 1, 1);
@@ -106,6 +110,13 @@ public class GamePanel extends JPanel implements MouseListener {
 
 	}
     
+	/**
+	 * Die Methode handleOtherPlayerMove umfasst den Umgang mit einem gegnerischen Zug. Es wird als erstes überprüft welcher Spieler an der Reihe ist.
+	 * Der andere Spiel wird dann in eine wartende Position gestellt und die Methode empfange ausgeführt, sodass die Spaltennummer des Zugs des Gegners
+	 * empfangen werden kann. Danach wird der Zug des Gegners gesetzt, das Spielfeld aktualisiert, auf Sieg oder
+     * Unentschieden überprüft, der Spielerwechsel gemacht, die Spaltennummer an den Gegner gesendet und die Methode enableGameField, die das 
+     * Spielfeld für den Spieler der gerade Daten empfangen hat entsperrt, aufgerufen.
+	 */
     public void handleOtherPlayerMove() {
 
     	int col = -1;
@@ -128,6 +139,11 @@ public class GamePanel extends JPanel implements MouseListener {
 		});
     }
     
+    /**
+     * Die Methode sendColumnToOtherPlayer überprüft welcher Spieler gerade an der Reihe ist. Je nach dem wer an der Reihe ist wird dann 
+     * entweder die send Methode des Servers oder des Client aufgerufen und die übergebene Spaltennummer gesendet.
+     * @param int col
+     */
     private void sendColumnToOtherPlayer(int col) {
     	if(VierGewinnt.instance.iAmServer()) { // spiele ich als Server?
     		VierGewinnt.instance.getServer().send(String.valueOf(col));
@@ -169,7 +185,7 @@ public class GamePanel extends JPanel implements MouseListener {
     }
     
     /**
-     * Methode checkWin. Die Methode checkWin greift auf die Methode hatGeewonnen zu, und gibt ein Tectfeld mit dem Sieger aus.
+     * Methode checkWin. Die Methode checkWin greift auf die Methode hatGewonnen zu und gibt ein Textfeld mit dem Sieger aus.
      */
     private void checkWin() {
     	if(this.gameLogic.hatGewonnen()) {
