@@ -49,7 +49,7 @@ public class MeinServerTest {
 			}
 	}
 	
-	public void send(String Spalte) {
+	public void send_old(String Spalte) {
 		Thread sender = new Thread(new Runnable() { // Hier werden Daten vom Benutzer (der Eingabe) gelesen und an den
 													// Client gesendet
 			
@@ -65,7 +65,12 @@ public class MeinServerTest {
 		sender.start();
 	}
 	
-	public int empfange() {
+	public void send(String Spalte) {
+		out.println(Spalte); // schreibt die Daten in den clientSocket
+		out.flush(); // sendet die Daten an den Client
+	}
+	
+	public int empfange_old() {
 		
 		Thread receive = new Thread(new Runnable() {
 			String col;
@@ -91,6 +96,18 @@ public class MeinServerTest {
 			}
 		});
 		receive.start();
+		return spalte;
+	}
+	
+	public int empfange() {
+
+		String col;
+		try {
+			col = in.readLine();
+			spalte = Integer.parseInt(col);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return spalte;
 	}
 	
