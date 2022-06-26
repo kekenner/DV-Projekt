@@ -6,36 +6,34 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import logic.Konfiguration;
 import logic.Spieler;
 
 /**
  * Die Klasse GamePanel ist eine Tochterklasse der Java Klasse JPanel und implementiert den MouseListener.
- * Sie enthï¿½lt die Methoden resetGameLogic, PaintComponent, checkField, resetandrepaintFields, checkWin und CheckDraw.
- * Diese Klasse ist mit der Spiellogik verknï¿½pft.
+ * Sie enthält die Methoden resetGameLogic, PaintComponent, checkField, resetandrepaintFields, checkWin und CheckDraw.
+ * Diese Klasse ist mit der Spiellogik verknüpft.
  * 
  * @author mariusmauth SimonFluck
  *
  */
 public class GamePanel extends JPanel implements MouseListener {
 	
-	public static logic.VierGewinnt gameLogic;
+	private logic.VierGewinnt gameLogic;
 	private Spieler spieler1;
 	private Spieler spieler2;
-	
+	private boolean disabled = false;
 	
 	public GamePanel() {
 		setBackground(Color.BLUE);
 		requestFocus();
 		addMouseListener(this);
 		this.resetGameLogic();
-		
-		
 	}
 	
 	
@@ -45,14 +43,14 @@ public class GamePanel extends JPanel implements MouseListener {
 	private void resetGameLogic() {
 		Konfiguration konf = new Konfiguration(7, 6);
 		if(this.spieler1 == null) {
-			this.spieler1 = new Spieler("","rot", 1);
-			this.spieler2 = new Spieler("","gruen", -1);
+			this.spieler1 = new Spieler("", 1);
+			this.spieler2 = new Spieler("", -1);
 		}
-		gameLogic = new logic.VierGewinnt(
-				konf,
-				this.spieler1,
-				this.spieler2
-		);
+		if(this.gameLogic != null) {
+			this.gameLogic.spielFeldLeeren();
+		} else {
+			this.gameLogic = new logic.VierGewinnt(konf, spieler1, spieler2);
+		}
 	}
 	
 	/**
@@ -73,78 +71,90 @@ public class GamePanel extends JPanel implements MouseListener {
 	}
     
     /**
-     * Methode checkField. Diese Methode ï¿½berprï¿½ft den Wert eines neu angeklickten Feldes.
+     * Methode checkField. Diese Methode überprüft den Wert eines neu angeklickten Feldes.
      * Hat das angeklickte Feld den Wert "EMPTY" wird erst der Spielstein im Feld platziert, dannach werden
      * die Methoden resetAndRepaintFields, checkWin, checkDraw, spielerWechseln und nextPlayerTurn aufgerufen.
      * 
      * @param x
      * @param y
      */
-    private void checkField(int x, int y) {
-    	Rectangle cursorHitbox = new Rectangle(x, y, 1, 1);
-    	for(Field field : VierGewinnt.instance.getFields()) {
-    		if(cursorHitbox.intersects(field)) {
-    			
-    			if(field.getValue() == FieldValue.EMPTY) {
-    				
-    				if(VierGewinnt.instance.getServerOderClient()== true ) {
-    					
-    					this.gameLogic.setzeZug(field.getCol());
-    					resetAndRepaintFields();
-    					checkWin();
-    					checkDraw();
-    					String col = String.valueOf(field.getCol());
-    					VierGewinnt.instance.getClient().send(col);
-    					System.out.println("Spaltennummer wurde versendet");
-    					this.gameLogic.spielerWechseln();
-    					VierGewinnt.instance.nextPlayerTurn();
-    					
-    					
-    					
-    					//VierGewinnt.instance.getClient().empfange();   					
-    			    					
-    				}
-    				
-    															//Reihenfolge:	1. Spalte in die der Server Spieler ein Steinchen rein geworfen hat wird zum Client geschickt.
-																//				2. setzeZug(field.getCol) wird ausgefï¿½hrt.
-																//				3. Fenster wird fï¿½r den Server Spieler gesperrt.
-																//				4. Antwort des Client Spielers kommt.
-																//				5. spieler.Wechseln wird ausgefï¿½hrt.
-																//    			6. Zug des Client Spielers setzen.
-																//				7. spieler.Wechslen wird ausgefï¿½hrt.
-																//				8. Fenster wird fï¿½r Server Spieler freigegeben.--> von vorne
-    				
-    				
-    				
-    				else if(VierGewinnt.instance.getServerOderClient()== false) {    					
-    					
-    					
-    					this.gameLogic.setzeZug(field.getCol());
-    					resetAndRepaintFields();
-    					checkWin();
-        				checkDraw();
-        				String col = String.valueOf(field.getCol());
-    					VierGewinnt.instance.getServer().send(col);
-    					System.out.println("Spaltennummer wurde versendet");
-    					this.gameLogic.spielerWechseln();
-        				VierGewinnt.instance.nextPlayerTurn();
-        				
-        				//VierGewinnt.instance.getClient().empfange();
-        				
-    				}
-    			}
-    			break;
-    		}
+	private void checkField(int x, int y) {
+		Rectangle cursorHitbox = new Rectangle(x, y, 1, 1);
+		for (Field field : VierGewinnt.instance.getFields()) {
+			if (cursorHitbox.intersects(field)) {
+
+				if (field.getValue() == FieldValue.EMPTY) {
+					this.gameLogic.setzeZug(field.getCol());
+					resetAndRepaintFields();
+					checkWin();
+					checkDraw();
+					this.gameLogic.spielerWechseln();
+					VierGewinnt.instance.nextPlayerTurn();
+					this.disableGameField();
+					this.sendColumnToOtherPlayer(field.getCol());
+
+					SwingUtilities.invokeLater(new Runnable() {
+						@Override
+						public void run() {
+							handleOtherPlayerMove();
+						}
+					});
+				}
+				break;
+			}
+		}
+
+	}
+    
+    public void handleOtherPlayerMove() {
+
+    	int col = -1;
+    	if(VierGewinnt.instance.iAmServer()) { // spiele ich als Server?
+    		col = VierGewinnt.instance.getServer().empfange();
+    	} else {
+    		col = VierGewinnt.instance.getClient().empfange();
     	}
-    	
+    	this.gameLogic.setzeZug(col);
+		resetAndRepaintFields();
+		checkWin();
+		checkDraw();
+		this.gameLogic.spielerWechseln();
+		VierGewinnt.instance.nextPlayerTurn();
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				enableGameField();
+			}
+		});
     }
     
-    /**
-     * Methode resetAndRepaintFields. Die Methode zeichnet nach jedem ausgefï¿½hrten Zug das Spielfeld neu, somit wird der neu 
+    private void sendColumnToOtherPlayer(int col) {
+    	if(VierGewinnt.instance.iAmServer()) { // spiele ich als Server?
+    		VierGewinnt.instance.getServer().send(String.valueOf(col));
+    	} else {
+    		VierGewinnt.instance.getClient().send(String.valueOf(col));
+    	}
+    }
+    
+    private void enableGameField() {
+    	setBackground(Color.BLUE);
+    	resetAndRepaintFields();
+		this.disabled = false;
+	}
+
+
+	public void disableGameField() {
+		setBackground(Color.GRAY);
+		resetAndRepaintFields();
+		this.disabled = true;
+	}
+
+
+	/**
+     * Methode resetAndRepaintFields. Die Methode zeichnet nach jedem ausgeführten Zug das Spielfeld neu, somit wird der neu 
      * gesetzte Spielstein angezeigt.
      */
     private void resetAndRepaintFields() {
-    	
     	for(Field field : VierGewinnt.instance.getFields()) {
     		int fieldVal = this.gameLogic.getFieldValue(field.getCol(), field.getRow());
     		if(fieldVal == 1) {
@@ -191,7 +201,9 @@ public class GamePanel extends JPanel implements MouseListener {
      */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		checkField(e.getX(), e.getY());
+		if(!this.disabled) {
+			checkField(e.getX(), e.getY());
+		}
 	}
 
 	@Override
