@@ -11,15 +11,16 @@ public class MeinClientTest {
 	
 	private Socket clientSocket; // clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom
 								// Client zu empfangen
-	private BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
-	private PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
+	public BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
+	public PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
 	private Scanner sc = new Scanner(System.in);
+	private int spalte;
 	
 	public void connect(String IPAdresse) {
 	try
 	{
 		clientSocket = new Socket(IPAdresse, 25000); // Socket des Client deklarieren. Dieser bekommt die
-															// IP-Adresse des Server und den Port übergeben.
+															// IP-Adresse des Server und den Port ï¿½bergeben.
 		out = new PrintWriter(clientSocket.getOutputStream());
 		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		
@@ -30,34 +31,37 @@ public class MeinClientTest {
 			}
 	}
 
-	public void send() {
+	public void send(String Spalte) {
 		Thread sender = new Thread(new Runnable() { // Hier werden Daten vom Benutzer (der Eingabe) gelesen und an den
 													// Client gesendet
-			String msg;
-
+			
 			@Override
 			public void run() {
-				while (true) {
-					msg = sc.nextLine(); // liest die Daten aus der Eingabezeile
-					out.println(msg); // schreibt die Daten in den clientSocket
+
+					 // liest die Daten aus der Eingabezeile
+					out.println(Spalte); // schreibt die Daten in den clientSocket
 					out.flush(); // sendet die Daten an den Client
-				}
+					System.out.println("Data send.");
+		
 			}
 		});
 		sender.start();
 	}
 	
-	public void empfange() {
+	public int empfange() {
+		
 		Thread receive = new Thread(new Runnable() {
-			String msg;
-
+			String col;
+			
 			@Override
 			public void run() {
 				try {
-					msg = in.readLine();
-					while (msg != null) {
-						System.out.println("Server: " + msg);
-						msg = in.readLine();
+					col = in.readLine();
+					while (col != null) {
+						//System.out.println("Server: " + msg);
+						col = in.readLine();
+						spalte = Integer.parseInt(col);
+						System.out.println(spalte);
 					}
 					System.out.println("Client disconnected");
 
@@ -69,5 +73,6 @@ public class MeinClientTest {
 			}
 		});
 		receive.start();
+		return spalte;
 	}
 }

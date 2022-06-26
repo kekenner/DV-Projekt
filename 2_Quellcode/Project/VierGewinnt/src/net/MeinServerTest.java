@@ -12,34 +12,35 @@ import javax.swing.JOptionPane;
 
 public class MeinServerTest {
 
-	private ServerSocket serverSocket; // serverSocket hört auf Verbindungsanfragen des Clients
+	private ServerSocket serverSocket; // serverSocket hï¿½rt auf Verbindungsanfragen des Clients
 	private Socket clientSocket; // clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom
 								// Client zu empfangen.
-	private BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
-	private PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
+	public BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
+	public PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
 	private Scanner sc = new Scanner(System.in);
+	private int spalte;
 
 	public void connect() {
 	try
 	{
-		serverSocket = new ServerSocket(25000); // Wird verwendet um auf Verbindungsanforderungen vom Client zu hören.
+		serverSocket = new ServerSocket(25000); // Wird verwendet um auf Verbindungsanforderungen vom Client zu hï¿½ren.
 		System.out.println("Server wartet auf eine Verbindungsanfrage des Client...");
 		JOptionPane.showMessageDialog(null,
                 "Warten auf Gegenspieler...",
                 "Du wirst benachrichtigt sobald dein Gegenspeieler eingetroffen ist!",
                 JOptionPane.INFORMATION_MESSAGE);
 		clientSocket = serverSocket.accept(); // Der Server Socket verwendet die Methode accept() um auf eine
-												// Anforderung des Client zu warten. Sobald er eine erhält, akzeptiert
+												// Anforderung des Client zu warten. Sobald er eine erhï¿½lt, akzeptiert
 												// er sie und erstellt eine Instanz der Socket Klasse.
 		System.out.println("Der Server ist mit dem Client verbunden.");
 		out = new PrintWriter(clientSocket.getOutputStream()); // Instanziieren von out. getOutputStream ist ein
-																// Ausgabestrom für den clientSocket, da dieser für das
+																// Ausgabestrom fï¿½r den clientSocket, da dieser fï¿½r das
 																// Senden der Daten an den Client verantwortlich ist.
 		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // Instanziieren von in. Erstellt
-																						// einen Stream Reader für den
+																						// einen Stream Reader fï¿½r den
 																						// clientSocket, der die Daten
 																						// als Bytes getInputStream
-																						// erhällt. Der BufferedReader
+																						// erhï¿½llt. Der BufferedReader
 																						// wandelt diese in Zeichen um.
 	}catch(
 			IOException e)
@@ -48,34 +49,36 @@ public class MeinServerTest {
 			}
 	}
 	
-	public void send() {
+	public void send(String Spalte) {
 		Thread sender = new Thread(new Runnable() { // Hier werden Daten vom Benutzer (der Eingabe) gelesen und an den
 													// Client gesendet
-			String msg;
-
+			
 			@Override
 			public void run() {
-				while (true) {
-					msg = sc.nextLine(); // liest die Daten aus der Eingabezeile
-					out.println(msg); // schreibt die Daten in den clientSocket
+
+					out.println(Spalte); // schreibt die Daten in den clientSocket
 					out.flush(); // sendet die Daten an den Client
-				}
+					System.out.println("Data send.");
+		
 			}
 		});
 		sender.start();
 	}
 	
-	public void empfange() {
+	public int empfange() {
+		
 		Thread receive = new Thread(new Runnable() {
-			String msg;
-
+			String col;
+			
 			@Override
 			public void run() {
 				try {
-					msg = in.readLine();
-					while (msg != null) {
-						System.out.println("Client: " + msg);
-						msg = in.readLine();
+					col = in.readLine();
+					while (col != null) {
+						//System.out.println("Client: " + msg);
+						col = in.readLine();
+						spalte = Integer.parseInt(col);
+						System.out.println(spalte);
 					}
 					System.out.println("Client ist nicht mehr verbunden.");
 
@@ -88,6 +91,7 @@ public class MeinServerTest {
 			}
 		});
 		receive.start();
+		return spalte;
 	}
 	
 }
