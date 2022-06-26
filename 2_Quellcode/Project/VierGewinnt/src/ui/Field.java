@@ -38,7 +38,7 @@ public class Field extends Rectangle  {
 	 */
 	public void draw(Graphics2D g2d) {
 		// Rahmen Zeichnen 
-		g2d.setColor(Color.BLACK);Color c;
+		g2d.setColor(Color.BLACK);
 		g2d.drawRect(x, y, width, height);
 		
 		// Symbole Zeichnen

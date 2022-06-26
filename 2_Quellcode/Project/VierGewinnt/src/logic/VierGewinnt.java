@@ -37,10 +37,6 @@ public class VierGewinnt {
 	private int aktuelleSpalte;
 	
 	
-	
-	
-
-	
 	/**
 	 * Feld wird initialisiert
 	 */
@@ -61,6 +57,13 @@ public class VierGewinnt {
 		this.aktuellerSpieler = spieler1;
 		
 		// Feld erzeugen, aus den Werten der Konfiguration
+		this.feld = new int[this.konfiguration.getAnzahlSpalten()][this.konfiguration.getAnzahlZeilen()];
+	}
+	
+	/**
+	 * Initialisiert das Spielfeld neu.
+	 */
+	public void spielFeldLeeren() {
 		this.feld = new int[this.konfiguration.getAnzahlSpalten()][this.konfiguration.getAnzahlZeilen()];
 	}
 	
@@ -392,6 +395,14 @@ public class VierGewinnt {
 	 */
 	public Spieler getAktuellerSpieler () {
 		return this.aktuellerSpieler;
+	}
+
+	/**
+	 * Setermethode, für den aktuellen Spieler.
+	 * @param Spieler aktuellerSpieler - aktueller Spieler.
+	 */
+	public void setAktuellerSpieler(Spieler aktuellerSpieler) {
+		this.aktuellerSpieler = aktuellerSpieler;
 	}
 
 }
