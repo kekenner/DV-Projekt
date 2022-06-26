@@ -16,8 +16,9 @@ public class VierGewinnt {
 
 	private FieldValue currentPlayer;
 	private ArrayList<Field> fields; // Arraylist die Daten vom Typ Field beinhaltet
-	private static net.MeinServerTest server = new net.MeinServerTest();
-	private static net.MeinClientTest client = new net.MeinClientTest();
+	private net.MeinServerTest server = new net.MeinServerTest();
+	private net.MeinClientTest client = new net.MeinClientTest();
+	private boolean iAmServer = false;
 
 	private Gamewindow window;
 
@@ -33,11 +34,15 @@ public class VierGewinnt {
 				options[0]);
 		if (n == JOptionPane.NO_OPTION) {
 			String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die Server ID ein!", "Server ID");
-			client.connect(serverID);
+			instance.client.connect(serverID);
+			instance.iAmServer = false;
 			String spieler2 = JOptionPane.showInputDialog(null, "Gib deinen Name ein:","Dein Name");
 			instance.window.getGamePanel().getGameLogic().getSpieler2().setName(spieler2);
+			instance.window.getGamePanel().disableGameField();
+			instance.window.getGamePanel().handleOtherPlayerMove();
 		} else if (n == JOptionPane.YES_OPTION) {
-			server.connect();
+			instance.server.connect();
+			instance.iAmServer = true;
 			JOptionPane.showMessageDialog(null,"Gegenspieler Gefunden!","Klicke auf OK um fortzufahren!",JOptionPane.INFORMATION_MESSAGE);
 			String spieler1 = JOptionPane.showInputDialog(null, "Gib deinen Name ein:", "Dein Name");
 			instance.window.getGamePanel().getGameLogic().getSpieler1().setName(spieler1);
@@ -53,6 +58,7 @@ public class VierGewinnt {
 	 */
 	public VierGewinnt() { 
 		window = new Gamewindow(650, 650); // Größe des Gamewindow wird festgelegt
+		currentPlayer = FieldValue.Spieler1;
 		initGame(); 
 
 	}
@@ -60,8 +66,6 @@ public class VierGewinnt {
 	 * Methode "initGame" platziert das Spielfeld und unterteilt es in 42 einzelne Felder. 
 	 */
 	public void initGame() {
-		
-		currentPlayer = FieldValue.Spieler1;
 		
 		int fieldsMarginLeft = 13; // Abstand linker Rand in Pixel
 		int fieldsMarginTop = 35; // Abstand oberer Rand in Pixel
@@ -186,5 +190,17 @@ public class VierGewinnt {
 	 */
 	public ArrayList<Field> getFields() { 
 		return fields;
+	}
+
+	public net.MeinServerTest getServer() {
+		return server;
+	}
+
+	public net.MeinClientTest getClient() {
+		return client;
+	}
+
+	public boolean iAmServer() {
+		return iAmServer;
 	}
 }
