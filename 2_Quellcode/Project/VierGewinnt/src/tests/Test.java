@@ -29,8 +29,8 @@ public class Test {
 
 	private static void testSpiel() {
 		Konfiguration konfiguration = new Konfiguration(8, 8);
-		Spieler spieler1 = new Spieler("Tom", "blau", 1);
-		Spieler spieler2 = new Spieler("Fabian", "rot", -1);
+		Spieler spieler1 = new Spieler("Tom", 1);
+		Spieler spieler2 = new Spieler("Fabian", -1);
 		VierGewinnt spiel = new VierGewinnt(konfiguration,spieler1, spieler2);
 		
 		Spieler aktuelleSpieler = spieler1;
@@ -52,8 +52,8 @@ public class Test {
 	private static void testHatGewonnenVertikal() {
 		//Spiel und Spieler erzeugen:
 		Konfiguration konfiguration = new Konfiguration(7, 6);
-		Spieler spieler1 = new Spieler("Max", "blau", 1);
-		Spieler spieler2 = new Spieler("Eva", "rot", -1);
+		Spieler spieler1 = new Spieler("Max", 1);
+		Spieler spieler2 = new Spieler("Eva", -1);
 		VierGewinnt spiel = new VierGewinnt(konfiguration,spieler1, spieler2);
 		
 		spiel.setzeZug(0);
@@ -74,8 +74,8 @@ public class Test {
 	private static void testHatGewonnenHorizontal() {
 		//Spiel und Spieler erzeugen:
 		Konfiguration konfiguration = new Konfiguration(7, 6);
-		Spieler spieler1 = new Spieler("Max", "blau", 1);
-		Spieler spieler2 = new Spieler("Eva", "rot", -1);
+		Spieler spieler1 = new Spieler("Max", 1);
+		Spieler spieler2 = new Spieler("Eva", -1);
 		VierGewinnt spiel = new VierGewinnt(konfiguration,spieler1, spieler2);
 		
 		spiel.setzeZug(0);
@@ -95,8 +95,8 @@ public class Test {
 	private static void testIstGueltig() {
 		//Spiel und Spieler erzeugen:
 		Konfiguration konfiguration = new Konfiguration(7, 6);
-		Spieler spieler1 = new Spieler("Max", "blau", 1);
-		Spieler spieler2 = new Spieler("Eva", "rot", -1);
+		Spieler spieler1 = new Spieler("Max",  1);
+		Spieler spieler2 = new Spieler("Eva", -1);
 		VierGewinnt spiel = new VierGewinnt(konfiguration,spieler1, spieler2);
 		
 		//Ein Zug in eine, nicht existirende Spalte sollte FALSE zurückliefern
@@ -118,8 +118,8 @@ public class Test {
 	private static void testSetzeZug() {
 		//Spiel und Spieler erzeugen:
 		Konfiguration konfiguration = new Konfiguration(7, 6);
-		Spieler spieler1 = new Spieler("Max", "blau", 1);
-		Spieler spieler2 = new Spieler("Eva", "rot", -1);
+		Spieler spieler1 = new Spieler("Max", 1);
+		Spieler spieler2 = new Spieler("Eva", -1);
 		VierGewinnt spiel = new VierGewinnt(konfiguration,spieler1, spieler2);
 		
 		spiel.setzeZug(1);

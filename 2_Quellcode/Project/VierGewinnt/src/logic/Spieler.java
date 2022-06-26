@@ -14,12 +14,6 @@ public class Spieler {
 	 */
 	private String name;
 	
-	
-	/**
-	 * Farbauswahl für Spieler 1 und Spieler 2.
-	 */
-	private String farbe;
-	
 	/**
 	 * das technische Zeichen des Spielers, 
 	 * das im Spielfeld für diesen Spieler benutzt werden soll.
@@ -33,10 +27,9 @@ public class Spieler {
 	 * @param farbe Farbe seiner Steine
 	 * @param spielerZeichen technisches Zeichen des Spielers, das im Spielfeld für diesen Spieler benutzt werde soll
 	 */
-	public Spieler(String name, String farbe, int spielerZeichen) {
+	public Spieler(String name, int spielerZeichen) {
 		super();
 		this.name = name;
-		this.farbe = farbe;
 		this.spielerZeichen = spielerZeichen;
 	}
 	
@@ -58,23 +51,6 @@ public class Spieler {
 		this.name = name;
 	}
 	
-	
-	/**
-	 * Gibt die Farbe der Spieler zurück.
-	 * @return Farbe
-	 */
-	public String getFarbe() {
-		return farbe;
-	}
-	
-	
-	/**
-	 * Farben von Spieler 1 und Spieler 2 werden ausgewählt.
-	 * @param farbe
-	 */
-	public void setFarbe(String farbe) {
-		this.farbe = farbe;
-	}
 
 	/**
 	 * Gibt das technische Zeichen des Spielers zurück, 
