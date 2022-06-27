@@ -11,6 +11,7 @@ import net.MeinServerTest;
 /**
  * "VierGewinnt" ist die Hauptklasse der GUI
  * @author SimonFluck, mariusmauth
+ * @edit Marven Schwarz, Kevin Kenner
  */
 public class VierGewinnt { 
 
@@ -24,16 +25,21 @@ public class VierGewinnt {
 
 	public static VierGewinnt instance;
 
+	/**
+	 * In der main Methode wird ein Objekt der Klasse VierGewinnt erzeugt. Außerdem wird bei jedem Spieler ein Fenster erzeugt in dem der
+	 * Spieler wählen kann ob er selber einen Server startet oder sich mit einem Server verbinden will.
+	 * @param String args
+	 */
 	public static void main(String[] args) {
 		instance = new VierGewinnt();
 
-		Object[] options = { "Server", "Client" };
+		Object[] options = { "Server starten", "Mit Server verbinden..." };
 		Component frame = null;
-		int n = JOptionPane.showOptionDialog(frame, "Bitte wähle, ob du Server oder Client bist!",
+		int n = JOptionPane.showOptionDialog(frame, "Bitte wähle, ob du einen Server starten möchtest oder dich mit einem Server verbinden möchtest!",
 				" Server/Client Auswahl!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
 				options[0]);
 		if (n == JOptionPane.NO_OPTION) {
-			String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die Server ID ein!", "Server ID");
+			String serverID = JOptionPane.showInputDialog(null, "Bitte geben sie die IP Adresse des Server ein!", "Server IP Adresse");
 			instance.client.connect(serverID);
 			instance.iAmServer = false;
 			String spieler2 = JOptionPane.showInputDialog(null, "Gib deinen Name ein:","Dein Name");
@@ -54,7 +60,8 @@ public class VierGewinnt {
 	}
 	
 	/**
-	 * Konstruktor der Klasse "VierGewinnt" mit der Methode "initGame"
+	 * Konstruktor der Klasse "VierGewinnt" in der ein Objekt der Klasse Gamewindow erzeugt wird, der aktuelle Spieler gesetzt wird und
+	 * mit der Methode initGame ein neues Spielfeld initialisiert wird.
 	 */
 	public VierGewinnt() { 
 		window = new Gamewindow(650, 650); // Größe des Gamewindow wird festgelegt
@@ -176,8 +183,8 @@ public class VierGewinnt {
 	}
 	
 	/**
-	 * Get methode für den aktuellen Spieler
-	 * @return
+	 * Get Methode für den Spieler der gerade am Zug ist.
+	 * @return currentPlayer
 	 */
 	public FieldValue getcurrentPlayer() { 
 		return currentPlayer;
@@ -185,21 +192,33 @@ public class VierGewinnt {
 	}
 
 	/**
-	 * Get Methode für das aktuelle Feld
-	 * @return
+	 * Get Methode für das aktuelle Feld eines Spielsteins.
+	 * @return fields
 	 */
 	public ArrayList<Field> getFields() { 
 		return fields;
 	}
 
+	/**
+	 * Get Methode für die erzeugte Serverinstanz. Diese Get Methode ermöglicht das Zugreifen auf das server Objekt aus anderen Klassen heraus.
+	 * @return server
+	 */
 	public net.MeinServerTest getServer() {
 		return server;
 	}
 
+	/**
+	 * Get Methode für die erzeugte Clientinstanz. Diese Get Methode ermöglicht das Zugreifen auf das client Objekt aus anderen Klassen heraus.
+	 * @return client
+	 */
 	public net.MeinClientTest getClient() {
 		return client;
 	}
 
+	/**
+	 * Get Methode für die Abfrage ob gerade der Server oder der Client der aktuelle Spieler ist.
+	 * @return iAmServer
+	 */
 	public boolean iAmServer() {
 		return iAmServer;
 	}
