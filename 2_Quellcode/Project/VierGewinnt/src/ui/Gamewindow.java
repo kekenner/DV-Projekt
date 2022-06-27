@@ -35,10 +35,10 @@ public class Gamewindow extends JFrame {
 		
 		
 		gamePanel = new GamePanel();                                  // Klasse Gamepanel einfügen
-		getContentPane().add(gamePanel, BorderLayout.CENTER);                   // Platzierung des Gamepanels auf dem ContentPane in der Mitte
+		getContentPane().add(gamePanel, BorderLayout.CENTER);         
 		
 		
-		currentPlayerLabel = new JLabel("Laden...");
+		currentPlayerLabel = new JLabel("Laden...");					//Spieleranzeige
 		getContentPane().add(currentPlayerLabel,BorderLayout.NORTH);
 		currentPlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
