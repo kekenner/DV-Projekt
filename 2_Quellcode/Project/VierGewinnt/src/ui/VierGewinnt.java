@@ -81,7 +81,7 @@ public class VierGewinnt {
 
 		fields = new ArrayList<Field>(); // Fields Arraylist werden die Felder hinzugefügt
 
-		// Erzeugen der Felder der ersten Reihe
+		// Platzierung der Felder der ersten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 0, fieldWidth, fieldHeight, 0, 5));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 1, 5));
 		fields.add(new Field(fieldsMarginLeft + 2 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 2, 5));
@@ -90,7 +90,7 @@ public class VierGewinnt {
 		fields.add(new Field(fieldsMarginLeft + 5 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 5, 5));
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 0, fieldWidth, fieldHeight, 6, 5));
 		
-		// Erzeugen der Felder der zweiten Reihe
+		// Platzierung der Felder der zweiten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 1 * fieldHeight, fieldWidth, fieldHeight, 0, 4));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 1 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 4));
@@ -105,7 +105,7 @@ public class VierGewinnt {
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 1 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 4));
 		
-		// Erzeugen der Felder der dritten Reihe
+		// Platzierung der Felder der dritten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 2 * fieldHeight, fieldWidth, fieldHeight, 0, 3));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 2 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 3));
@@ -120,7 +120,7 @@ public class VierGewinnt {
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 2 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 3));
 		
-		// Erzeugen der Felder der vierten Reihe
+		// Platzierung der Felder der vierten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 3 * fieldHeight, fieldWidth, fieldHeight, 0, 2));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 3 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 2));
@@ -135,7 +135,7 @@ public class VierGewinnt {
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 3 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 2));
 		
-		// Erzeugen der Felder der fünften Reihe
+		// Platzierung der Felder der fünften Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 4 * fieldHeight, fieldWidth, fieldHeight, 0, 1));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 4 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 1));
@@ -150,7 +150,7 @@ public class VierGewinnt {
 		fields.add(new Field(fieldsMarginLeft + 6 * fieldWidth, fieldsMarginTop + 4 * fieldHeight, fieldWidth,
 				fieldHeight, 6, 1));
 		
-		// Erzeugen der Felder der sechsten Reihe
+		// Platzierung der Felder der sechsten Reihe
 		fields.add(new Field(fieldsMarginLeft + 0, fieldsMarginTop + 5 * fieldHeight, fieldWidth, fieldHeight, 0, 0));
 		fields.add(new Field(fieldsMarginLeft + 1 * fieldWidth, fieldsMarginTop + 5 * fieldHeight, fieldWidth,
 				fieldHeight, 1, 0));

@@ -6,13 +6,13 @@ import java.awt.Rectangle;
 
 /**
  * Die Klasse Field ist eine Tochterklasse der Klasse Rectangle.
- * Hier werden die einzelnen Felder des Spielfelds erstellt. Diese werden in der Klasse VierGewinnt 
+ * Hier werden die einzelnen rechteckigen Felder des Spielfelds erstellt. Diese werden in der Klasse VierGewinnt 
  * in einer Arraylist gespeichert.
  * 
  * @author mariusmauth SimonFluck
  * 
  */
-public class Field extends Rectangle  {                               
+public class Field extends Rectangle  {                              
 	private FieldValue value;                                         // Werte des Feldes werden durch ein Enum gespeichert
 	private int col;
 	private int row;
