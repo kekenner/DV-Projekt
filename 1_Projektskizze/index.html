@@ -83,79 +83,132 @@
 
 		<div class="diagram">
 			classDiagram
+
 			class Server {
-				int port
-				startAbfrage()
+				ServerSocket serverSocket
+				Socket clientSocket
+				BufferedReader in
+				PrintWriter out
+				int spalte
+				connect()
+				send(String)
+				empfange()
 			}
+
 			class Client {
-				InetSocketAdress adress
-				startAbfrage()
+				Socket clientSocket
+				BufferedReader in
+				PrintWriter out
+				int spalte
+				connect(String)
+				send(String)
+				empfange()
 			}
-			class VierGewinnt {
-                                konfiguration Konfiguration
-				spieler1 Spieler
-				spieler2 Spieler
-                                feld int
-					C VierGewinnt(Konfiguration, Spieler, Spieler)
-					setzeZug(int, Spieler)
-					gueltigerZug(int)
-					hatGewonnen(Spieler, int)
-					getKonfiguration()
-					getSpieler1()
-					getSpieler2()
+
+			class VierGewinntLogic {
+                                Konfiguration konfiguration
+				Spieler spieler1
+				Spieler spieler2
+				Spieler aktuellerSpieler
+				int aktuelleSpalte
+                                int feld
+				VierGewinnt(Konfiguration, Spieler, Spieler)
+				spielFeldLeeren()
+				setzeZug(int)
+				istUnentschieden()
+				gueltigerZug(int)
+				hatGewonnen()
+				getKonfiguration()
+				getSpieler1()
+				getSpieler2()
+				getFieldValue(int, int)
+				spielerWechsel()
+				getAktuellerSpieler()
+				setAktuellerSpieler()
 			}
+
 			class Spieler {
-				name String
-				farbe String
-                                spielerZeichen int
-					C Spieler(String, String)
-					getName()
-					setName(String)
-					getFarbe()
-					setFarbe(String)
-                                        getspielerZeichen()
-                                        setspielerZeichen(int)
+				String name
+                                int spielerZeichen
+				Spieler(String, int)
+				getName()
+				setName(String)
+                                getSpielerZeichen()
+                                setSpielerZeichen(int)
 			}
+
 			class Konfiguration {
-				anzahlSpalten int
-				anzahlSpalten int
-					C Konfiguration(int, int)
-					getAnzahlSpalten()
-					setAnzahlSpalten(int)
-					getAnzahlZeilen()
-					setAnzahlZeilen(int)
-			
-			}
-
-
-
-			class GamePanel {
-				
-				
-				paintComponent()
-				checkField()
-				checkWin()
-				mouseClicked()
+				int anzahlSpalten
+				int anzahlZeilen 
+				Konfiguration(int, int)
+				getAnzahlSpalten()
+				setAnzahlSpalten(int)
+				getAnzahlZeilen()
+				setAnzahlZeilen(int)
 			}
 
 			class Field {
 				value FieldValue
-				draw()
+				int col
+				int row
+				draw(Graphics2D)
 				getValue()
 				setValue()
+				getCol()
+				getRow()
 			}
 
-			class GUI {
-				currentPlayer FieldValue
+			class GamePanel {
+				logic.VierGewinnt gameLogic
+				Spieler spieler1
+				Spieler spieler2
+				boolean disabled
+				resetGameLogic()
+				paintComponent(Graphics)
+				checkField(int, int)
+				handleOtherPlayerMove()
+				sendColoumnToOtherPlayer(int)
+				enableGameField()
+				disableGameField()
+				resetAndRepaintFields()
+				checkWin()
+				checkDraw()
+				mouseClicked(MouseEvent)
+			}
+
+			class Gamewindow {
+				JLabel currentPlayerLabel
+				GamePanel gamePanel
+				setCurrentPlayerLabelText(String)
+				GamePanel getGamePanel()
+			}
+
+			class VierGewinntUi {
+				FieldValue currentPlayer
+				ArrayList fields
+				net.MeinServerTest server
+				net.MeinClientTest client
+				boolean iAmServer
+				Gamewindow window
 				initGame()
+				nextPlayerTurn()
+				getcurrentPlayer()
+				getFields()
+				getServer()
+				getClient()
+				iAmServer()
 			}
 
-			VierGewinnt <|-- Server
-			Client <|-- GamePanel
-			Client <|-- Field
-			Client <|-- GUI
-                        Spieler <|-- VierGewinnt
-                        Konfiguration <|-- VierGewinnt
+			VierGewinntUi <|-- Server
+			VierGewinntUi <|-- Client
+			VierGewinntUi <|-- Gamewindow
+			VierGewinntUi <|-- VierGewinntLogic
+			VierGewinntUi <|-- Field
+                        VierGewinntLogic <|-- Spieler
+			VierGewinntLogic <|-- Konfiguration
+			GamePanel <|-- VierGewinntLogic
+			Gamewindow <|-- GamePanel
+                        
 		</div>
 
 
