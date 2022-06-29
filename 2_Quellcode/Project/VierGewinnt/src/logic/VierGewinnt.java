@@ -71,7 +71,6 @@ public class VierGewinnt {
 	 * Methode um einen Spielzug zu setzen.
 	 * 
 	 * @param spalte Spaltennummer, in die der Stein eingeworfen wurde.
-	 * @param spieler Spieler, der den Zug gemacht hat.
 	 * @return boolean Entscheidung über gültigen oder ungültigen Zug
 	 */
 	public boolean setzeZug(int spalte) {

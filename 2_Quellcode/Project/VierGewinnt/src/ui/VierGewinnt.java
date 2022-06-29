@@ -22,6 +22,9 @@ public class VierGewinnt {
 
 	private Gamewindow window;
 
+	/**
+	 * Instanz des Objekt VierGewinnt
+	 */
 	public static VierGewinnt instance;
 
 	/**

@@ -8,5 +8,16 @@ package ui;
  */
 public enum FieldValue {                  
 
-	Spieler1, Spieler2, EMPTY;            
+	/**
+	 * Spieler 1
+	 */
+	Spieler1,
+	/**
+	 * Spieler 2
+	 */
+	Spieler2,
+	/**
+	 * Empty
+	 */
+	EMPTY;            
 }

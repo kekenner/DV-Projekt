@@ -34,7 +34,7 @@ public class Field extends Rectangle  {
 	}
 	/**
 	 * Methode "draw" erstellt Rahmen und Symbole des Spielfeldes.
-	 * @param g2d
+	 * @param g2d Grafik des Spielfeldes
 	 */
 	public void draw(Graphics2D g2d) {
 		// Rahmen Zeichnen 

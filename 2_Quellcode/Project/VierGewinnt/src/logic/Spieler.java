@@ -24,7 +24,6 @@ public class Spieler {
 	 * Konstruktor um einen Spieler zu erzeugen
 	 * 
 	 * @param name Name des Spielers
-	 * @param farbe Farbe seiner Steine
 	 * @param spielerZeichen technisches Zeichen des Spielers, das im Spielfeld für diesen Spieler benutzt werde soll
 	 */
 	public Spieler(String name, int spielerZeichen) {
@@ -64,7 +63,7 @@ public class Spieler {
 	/**
 	 * setzt das technische Zeichen des Spielers, 
 	 * das im Spielfeld für diesen Spieler benutzt werde soll.
-	 * @return spielerZeichen Farbe des Spielers
+	 * @param spielerZeichen Farbe des Spielers
 	 */
 	public void setSpielerZeichen(int spielerZeichen) {
 		this.spielerZeichen = spielerZeichen;

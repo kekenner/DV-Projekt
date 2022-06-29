@@ -20,8 +20,14 @@ public class MeinServerTest {
 	private ServerSocket serverSocket; // serverSocket h�rt auf Verbindungsanfragen des Clients
 	private Socket clientSocket; // clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom
 								// Client zu empfangen.
-	public BufferedReader in; // BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
-	public PrintWriter out; // PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
+	/**
+	 * BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
+	 */
+	public BufferedReader in;
+	/**
+	 * PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
+	 */
+	public PrintWriter out;
 	private int spalte;
 	
 	/**
