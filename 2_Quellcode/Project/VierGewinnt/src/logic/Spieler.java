@@ -36,7 +36,7 @@ public class Spieler {
 	
 	/**
 	 * Gibt die Namen der Spieler zurück.
-	 * @return Name
+	 * @return name Name
 	 */
 	public String getName() {
 		return name;
@@ -45,7 +45,7 @@ public class Spieler {
 	
 	/**
 	 * Namen von Spieler 1 und Spieler 2 werden eingegeben.
-	 * @param name
+	 * @param name Name
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -55,7 +55,7 @@ public class Spieler {
 	/**
 	 * Gibt das technische Zeichen des Spielers zurück, 
 	 * das im Spielfeld für diesen Spieler benutzt werde soll.
-	 * @return Farbe
+	 * @return spielerZeichen Farbe des Spielers
 	 */
 	public int getSpielerZeichen() {
 		return spielerZeichen;
@@ -64,7 +64,7 @@ public class Spieler {
 	/**
 	 * setzt das technische Zeichen des Spielers, 
 	 * das im Spielfeld für diesen Spieler benutzt werde soll.
-	 * @return Farbe
+	 * @return spielerZeichen Farbe des Spielers
 	 */
 	public void setSpielerZeichen(int spielerZeichen) {
 		this.spielerZeichen = spielerZeichen;

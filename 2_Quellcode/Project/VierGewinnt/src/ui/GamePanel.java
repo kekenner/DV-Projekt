@@ -30,6 +30,10 @@ public class GamePanel extends JPanel implements MouseListener {
 	private Spieler spieler2;
 	private boolean disabled = false;
 	
+	/**
+	 * Konstruktor der Klasse GamePanel.
+	 * Spielfeldfarbe wird auf Blau gesetzt. Mouselistener wird aktiviert. Spielregeln werden zurückgesetzt.
+	 */
 	public GamePanel() {
 		setBackground(Color.BLUE);
 		requestFocus();
@@ -78,8 +82,8 @@ public class GamePanel extends JPanel implements MouseListener {
      * Unentschieden überprüft, der Spielerwechsel gemacht, das Spielfeld für den Spieler der gerade einen Zug gemacht hat gesperrt,
      * die Spaltennummer an den Gegner gesendet und die Methode handleOtherPlayerMove zum Umgang mit einem gegnerischen Zug aufgerufen.
      * 
-     * @param int x
-     * @param int y
+     * @param int x X-Koordinate des Mouseklicks
+     * @param int y Y-Koordinate des Mouseklicks
      */
 	private void checkField(int x, int y) {
 		Rectangle cursorHitbox = new Rectangle(x, y, 1, 1);
@@ -143,7 +147,7 @@ public class GamePanel extends JPanel implements MouseListener {
      * Die Methode sendColumnToOtherPlayer überprüft welcher Spieler gerade an der Reihe ist.
      * Je nach dem wer an der Reihe ist wird dann 
      * entweder die send Methode des Servers oder des Client aufgerufen und die übergebene Spaltennummer gesendet.
-     * @param int col
+     * @param int col Spaltennummer
      */
     private void sendColumnToOtherPlayer(int col) {
     	if(VierGewinnt.instance.iAmServer()) { // spiele ich als Server?
@@ -249,6 +253,10 @@ public class GamePanel extends JPanel implements MouseListener {
 		
 	}
 
+	/**
+	 * Get Methode für die gameLogic.
+	 * @return gameLogic Spiellogik
+	 */
 	public logic.VierGewinnt getGameLogic() {
 		return gameLogic;
 	}

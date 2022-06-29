@@ -9,7 +9,7 @@ import java.awt.Rectangle;
  * Hier werden die einzelnen rechteckigen Felder des Spielfelds erstellt. Diese werden in der Klasse VierGewinnt 
  * in einer Arraylist gespeichert.
  * 
- * @author mariusmauth SimonFluck
+ * @author Marius Mauth, Simon Fluck
  * 
  */
 public class Field extends Rectangle  {                              
@@ -19,12 +19,12 @@ public class Field extends Rectangle  {
 	
 	/**
 	 * Konstruktor der Klasse Field
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @param col
-	 * @param row
+	 * @param x X-Koordinate des Mouseklicks
+	 * @param y Y-Koordinate des Mouseklicks
+	 * @param width Breite des Spielfeldes
+	 * @param height Höhe des Spielfeldes
+	 * @param col Spaltenanzahl des Spielfeldes
+	 * @param row Zeilenanzahl des Spielfeldes
 	 */
 	public Field(int x, int y, int width, int height, int col, int row) {               
 		super(x, y, width, height);                                   
@@ -33,7 +33,7 @@ public class Field extends Rectangle  {
 		this.row = row;
 	}
 	/**
-	 * Methode "draw" erstellt Rahmen und Symbole
+	 * Methode "draw" erstellt Rahmen und Symbole des Spielfeldes.
 	 * @param g2d
 	 */
 	public void draw(Graphics2D g2d) {
@@ -57,32 +57,32 @@ public class Field extends Rectangle  {
 	}
 	
 	/**
-	 * get Methode für den value
-	 * @return
+	 * Get Methode für den value eines einzelnen Feldes.
+	 * @return value Wert eines einzelnen Feldes (Spieler1, Spieler2, Empty)
 	 */
 	public FieldValue getValue() {                   
 		return value;
 	}
 	
 	/**
-	 * set Methode für den value 
-	 * @param value
+	 * Set Methode für den value eines einzelnen Feldes.
+	 * @param value Wert eines einzelnen Feldes (Spieler1, Spieler2, Empty)
 	 */
 	public void setValue(FieldValue value) {         
 		this.value = value;
 	}
 	
 	/**
-	 * get Methode für die Spalte
-	 * @return
+	 * Get Methode für die Spalte des Spielfeldes.
+	 * @return col Spaltennummer
 	 */
 	public int getCol() {         					 
 		return col;
 	}
 	
 	/**
-	 * get Methode für die Zeile
-	 * @return
+	 * Get Methode für die Zeile des Spielfeldes.
+	 * @return row Zeilennummer
 	 */
 	public int getRow() {         					 
 		return row;

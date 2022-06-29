@@ -33,7 +33,7 @@ public class Konfiguration {
 
 	/**
 	 * Gibt die Anzahl der Spalten zurück.
-	 * @return Anzahl Spalten
+	 * @return anzahlSpalten Anzahl der Spalten
 	 */
 	public int getAnzahlSpalten() {
 		return anzahlSpalten;
@@ -42,7 +42,7 @@ public class Konfiguration {
 	
 	/**
 	 * Die Anzahl der Spalten des Spielfeld wird ausgewählt.
-	 * @param anzahlSpalten
+	 * @param anzahlSpalten Anzahl der Spalten
 	 */
 	public void setAnzahlSpalten(int anzahlSpalten) {
 		this.anzahlSpalten = anzahlSpalten;
@@ -51,7 +51,7 @@ public class Konfiguration {
 	
 	/**
 	 * Gibt die Anzahl der Zeilen zurück.
-	 * @return Anzahl Zeilen
+	 * @return anzahlZeilen Anzahl der Zeilen
 	 */
 	public int getAnzahlZeilen() {
 		return anzahlZeilen;
@@ -60,7 +60,7 @@ public class Konfiguration {
 	
 	/**
 	 * Die Anzahl der Zeilen des Spielfeld wird ausgewählt.
-	 * @param anzahlZeilen
+	 * @param anzahlZeilen Anzahl der Zeilen
 	 */
 	public void setAnzahlZeilen(int anzahlZeilen) {
 		this.anzahlZeilen = anzahlZeilen;

@@ -21,8 +21,8 @@ public class Gamewindow extends JFrame {
 	/**
 	 * Der Konstruktor "Gamewindow" legt Titel, Plazierung und Größe des Spilefensters fest.
 	 * Schließt das Programm auch im Hintergrund und legt das Borderlayout fest.
-	 * @param width
-	 * @param height
+	 * @param width Breite des Spielfeldes
+	 * @param height Höhe des Spielfeldes
 	 */
 	public Gamewindow(int width, int height) {       
 		
@@ -49,7 +49,7 @@ public class Gamewindow extends JFrame {
      
 	/**
 	 * Set Methode für den Parameter s.
-	 * @param s
+	 * @param s Aktueller Spieler
 	 */
 	public void setCurrentPlayerLabelText(String s) {
 		currentPlayerLabel.setText(s);
@@ -58,7 +58,7 @@ public class Gamewindow extends JFrame {
 
 	/**
 	 * Get Methode für das gamePanel.
-	 * @return
+	 * @return gamePanel Spielfeld
 	 */
 	public GamePanel getGamePanel() {
 		return gamePanel;

@@ -65,7 +65,7 @@ public class MeinServerTest {
 	
 	/**
 	 * In der Methode send() wird die übergebene Spaltennummer in den clientSocket geschrieben und anschließend gesendet.
-	 * @param String Spalte
+	 * @param Spalte Spaltennummer
 	 */
 	public void send(String Spalte) {
 		out.println(Spalte); 
@@ -75,7 +75,7 @@ public class MeinServerTest {
 	/**
 	 * In der Methode empfange() wird ausgelesen ob im BufferedReader Daten enthalten sind.
 	 * Da die Spaltennummer als String versendet wird, wird der String in eine Integer umgewandelt und als Rückgabewert zurückgegeben.
-	 * @return int spalte
+	 * @return spalte Spaltennummer
 	 */
 	public int empfange() {
 

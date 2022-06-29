@@ -28,7 +28,7 @@ public class MeinClientTest {
 	 * Das Attribut out wird als ein Objekt der Klasse PrintWriter initialisiert. PrintWriter ist ein Ausgabestrom für den clientSocket.
 	 * Das Attribut in wird als Objekt der Klasse BufferedReader initialisiert. Der BufferedReader ist der Eingabestrom, der die eingegebenen Daten in
 	 * ein nutzbares Format umwandelt.
-	 * @param IPAdresse
+	 * @param IPAdresse IP Adresse der Servers
 	 */
 	public void connect(String IPAdresse) {
 	try
@@ -47,7 +47,7 @@ public class MeinClientTest {
 
 	/**
 	 * In der Methode send() wird die übergebene Spaltennummer in den clientSocket geschrieben und anschließend gesendet.
-	 * @param String Spalte
+	 * @param Spalte Spaltennummer
 	 */
 	public void send(String Spalte) {
 		out.println(Spalte); // schreibt die Daten in den clientSocket
@@ -58,7 +58,7 @@ public class MeinClientTest {
 	 * In der Methode empfange() wird ausgelesen ob im BufferedReader Daten enthalten sind.
 	 * Da die Spaltennummer als String versendet wird, wird
 	 * wird der String in eine Integer umgewandelt und als Rückgabewert zurückgegeben.
-	 * @return int spalte
+	 * @return spalte Spaltennummer
 	 */
 	public int empfange() {
 

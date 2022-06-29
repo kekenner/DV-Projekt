@@ -46,9 +46,9 @@ public class VierGewinnt {
 	/**
 	 * Erzeugt das Feld der Schaltfläche, sowie Spieler 1 und Spieler 2. 
 	 * Die Konfiguration der Schaltfläche erlaubt der Anwendung das Ändern des Aussehens. 
-	 * @param konfiguration
-	 * @param spieler1
-	 * @param spieler2
+	 * @param konfiguration Konfiguration
+	 * @param spieler1 Spieler 1
+	 * @param spieler2 Spieler 2
 	 */
 	public VierGewinnt(Konfiguration konfiguration, Spieler spieler1, Spieler spieler2) {
 		this.konfiguration = konfiguration;
@@ -70,9 +70,9 @@ public class VierGewinnt {
 	/**
 	 * Methode um einen Spielzug zu setzen.
 	 * 
-	 * @param spalte - Spaltennummer, in die der Stein eingeworfen wurde.
-	 * @param spieler - Spieler, der den Zug gemacht hat.
-	 * @return "true" - bei einem gültigem Zug und "false" bei ungültigem Zug.
+	 * @param spalte Spaltennummer, in die der Stein eingeworfen wurde.
+	 * @param spieler Spieler, der den Zug gemacht hat.
+	 * @return boolean Entscheidung über gültigen oder ungültigen Zug
 	 */
 	public boolean setzeZug(int spalte) {
 		//ist der Zug nicht gültig?
@@ -97,7 +97,7 @@ public class VierGewinnt {
 	 * Methode analysiert das Spielfeld - sind alle Spalten des Feldes mit Chips belegt, 
 	 * ist das Spiel vorbei und die Methode liefert "false".
 	 * 
-	 * @return "true" - bei unentschieden, ansonsten "false".
+	 * @return boolean Entscheidung über Unentschieden oder nicht.
 	 */
 	public boolean istUnentschieden() { 
 		//wir überprüfen die oberste Zeile, ob sie noch freie Plätze hat
@@ -119,7 +119,7 @@ public class VierGewinnt {
 	 * ist der Zug ungültig und die Methode liefert "false". Ist der Spielzug gültig, geht 
 	 * das Spiel weiter.
 	 *
-	 * @param spalte - Spaltennummer, in die der Stein eingeworfen wurde
+	 * @param spalte Spaltennummer, in die der Stein eingeworfen wurde
 	 * @return "true" - bei einem gültigem Zug und "false" bei ungültigem Zug.
 	 */
 	private boolean gueltigerZug(int spalte) {
@@ -137,7 +137,7 @@ public class VierGewinnt {
 	 * Methode prüft nach jedem Spielzug, wie das Spiel ausgegangen ist (gewonnen oder unentschieden),
 	 * von dem eingeworfenen Chip aus in jegliche Richtung ob 4-in-Reihe der selben Farbe geschmissen wurden.
 	 * 
-	 * @return "true" - wenn das Spiel gewonnen wurde und "false" wenn nicht.
+	 * @return boolean Entscheidung über gültigen oder ungültigen Zug
 	 */
 	public boolean hatGewonnen() {
 		//zuerst finden wir die Position des letzten Einwurfs
@@ -323,7 +323,7 @@ public class VierGewinnt {
 	
 	/**
 	 * Gibt die Konfiguration zurück.
-	 * @return Konfiguration
+	 * @return konfiguration Konfiguration
 	 */
 	
 	public Konfiguration getKonfiguration() {
@@ -334,7 +334,7 @@ public class VierGewinnt {
     /**
      * Gibt den Spieler 1 zurück.
      *
-     * @return Spieler 1
+     * @return spieler1 Spieler 1
      * @see logic.Spieler
      */
 	public Spieler getSpieler1() {
@@ -345,7 +345,7 @@ public class VierGewinnt {
     /**
      * Gibt den Spieler 2 zurück.
      *
-     * @return Spieler 2
+     * @return spieler2 Spieler 2
      * @see logic.Spieler
      */
 	public Spieler getSpieler2() {
@@ -370,9 +370,9 @@ public class VierGewinnt {
 	/** 
 	 * Gettermethode, die den Feldwert zurückgibt
 	 * 
-	 * @param col - Spaltennummer.
-	 * @param row - Zeilennummwe.
-	 * @return int - der Feldwert der Spalte und Zeile
+	 * @param col Spaltennummer.
+	 * @param row Zeilennummwe.
+	 * @return int der Feldwert der Spalte und Zeile
 	 */
 	public int getFieldValue(int col, int row) {
 		return feld[col][row];
@@ -391,7 +391,7 @@ public class VierGewinnt {
 	
 	/**
 	 * Gettermethode, für den aktuellen Spieler.
-	 * @return aktueller Spieler
+	 * @return aktuellerSpieler aktueller Spieler
 	 */
 	public Spieler getAktuellerSpieler () {
 		return this.aktuellerSpieler;
@@ -399,7 +399,7 @@ public class VierGewinnt {
 
 	/**
 	 * Setermethode, für den aktuellen Spieler.
-	 * @param Spieler aktuellerSpieler - aktueller Spieler.
+	 * @param aktuellerSpieler aktueller Spieler.
 	 */
 	public void setAktuellerSpieler(Spieler aktuellerSpieler) {
 		this.aktuellerSpieler = aktuellerSpieler;
