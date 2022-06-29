@@ -25,7 +25,8 @@ public class MeinServerTest {
 	private int spalte;
 	
 	/**
-	 * Die Methode connect() der Serverseite erzeugt einen neuen ServerSocket. Dieser Socket ist für die Verbindung zwischen Server und Client verantwortlich.
+	 * Die Methode connect() der Serverseite erzeugt einen neuen ServerSocket.
+	 * Dieser Socket ist für die Verbindung zwischen Server und Client verantwortlich.
 	 * Wenn eine Verbindungsanfrage vom Client kommt wird diese über die accept() Methode akzeptiert. Ab diesem Zeitpunkt besteht eine Verbindung zwischen
 	 * Server und Client.
 	 * Der clientSocket ist der Socket über den Daten zwischen Server und Client gesendet und empfangen werden.
@@ -72,8 +73,8 @@ public class MeinServerTest {
 	}
 	
 	/**
-	 * In der Methode empfange wird ausgelesen ob im BufferedReader Daten enthalten sind. Da wir die Spaltennummer als String versenden
-	 * wird der String in eine Integer umgewandelt und als Rückgabewert zurückgegeben.
+	 * In der Methode empfange() wird ausgelesen ob im BufferedReader Daten enthalten sind.
+	 * Da die Spaltennummer als String versendet wird, wird der String in eine Integer umgewandelt und als Rückgabewert zurückgegeben.
 	 * @return int spalte
 	 */
 	public int empfange() {

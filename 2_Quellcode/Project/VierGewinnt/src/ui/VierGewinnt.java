@@ -10,8 +10,7 @@ import net.MeinServerTest;
 
 /**
  * "VierGewinnt" ist die Hauptklasse der GUI
- * @author SimonFluck, mariusmauth
- * @edit Marven Schwarz, Kevin Kenner
+ * @author SimonFluck, mariusmauth, Edit: Marven Schwarz, Kevin Kenner
  */
 public class VierGewinnt { 
 
@@ -26,7 +25,8 @@ public class VierGewinnt {
 	public static VierGewinnt instance;
 
 	/**
-	 * In der main Methode wird ein Objekt der Klasse VierGewinnt erzeugt. Auﬂerdem wird bei jedem Spieler ein Fenster erzeugt in dem der
+	 * In der main Methode wird ein Objekt der Klasse VierGewinnt erzeugt.
+	 * Auﬂerdem wird bei jedem Spieler ein Fenster erzeugt in dem der
 	 * Spieler w‰hlen kann ob er selber einen Server startet oder sich mit einem Server verbinden will.
 	 * @param String args
 	 */

@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 /**
- * Die Klasse "Gamewindow" ist eine Tochterklasse von JFrame aus dem Javax.swing Paket
+ * Die Klasse "Gamewindow" ist eine Tochterklasse von JFrame aus dem Javax.swing Paket.
  * @author SimonFluck, mariusmauth
  *
  */

@@ -22,7 +22,8 @@ public class MeinClientTest {
 	private int spalte;
 	
 	/**
-	 * Die Methode connect() der Clientseite erzeugt einen neuen clientSocket. Dieser Socket ist für den Datenverkehr zwischen Server und Client verantwortlich.
+	 * Die Methode connect() der Clientseite erzeugt einen neuen clientSocket.
+	 * Dieser Socket ist für den Datenverkehr zwischen Server und Client verantwortlich.
 	 * Außerdem wird über den clientSocket die Verbindungsanfrage an den Server mit der zuvor übergebenen IP Adresse des Servers und einer Portnummer gestellt.
 	 * Das Attribut out wird als ein Objekt der Klasse PrintWriter initialisiert. PrintWriter ist ein Ausgabestrom für den clientSocket.
 	 * Das Attribut in wird als Objekt der Klasse BufferedReader initialisiert. Der BufferedReader ist der Eingabestrom, der die eingegebenen Daten in
@@ -54,7 +55,8 @@ public class MeinClientTest {
 	}
 	
 	/**
-	 * In der Methode empfange wird ausgelesen ob im BufferedReader Daten enthalten sind. Da wir die Spaltennummer als String versenden
+	 * In der Methode empfange() wird ausgelesen ob im BufferedReader Daten enthalten sind.
+	 * Da die Spaltennummer als String versendet wird, wird
 	 * wird der String in eine Integer umgewandelt und als Rückgabewert zurückgegeben.
 	 * @return int spalte
 	 */

@@ -20,8 +20,7 @@ import logic.Spieler;
  * resetandrepaintFields, checkWin und CheckDraw.
  * Diese Klasse ist mit der Spiellogik verknüpft.
  * 
- * @author Marius Mauth, Simon Fluck
- * @edit Marven Schwarz, Kevin Kenner
+ * @author Marius Mauth, Simon Fluck, Edit: Marven Schwarz, Kevin Kenner
  *
  */
 public class GamePanel extends JPanel implements MouseListener {
@@ -40,8 +39,8 @@ public class GamePanel extends JPanel implements MouseListener {
 	
 	
 	/**
-	 * Die Methode resetGameLogic erzeugt nach der Standartkonfiguration ein neues Spielfeld. Wenn bereits ein Spiel gespielt wurde,
-	 * wird das Spielfeld nur geleert, sodass das Spiel von vorne losgehen kann.
+	 * Die Methode resetGameLogic erzeugt nach der Standartkonfiguration ein neues Spielfeld.
+	 * Wenn bereits ein Spiel gespielt wurde, wird das Spielfeld nur geleert, sodass das Spiel von vorne losgehen kann.
 	 */
 	private void resetGameLogic() {
 		Konfiguration konf = new Konfiguration(7, 6);
@@ -74,7 +73,7 @@ public class GamePanel extends JPanel implements MouseListener {
 	}
     
     /**
-     * Methode checkField. Diese Methode überprüft den Wert eines neu angeklickten Feldes.
+     * Die Methode checkField überprüft den Wert eines neu angeklickten Feldes.
      * Hat das angeklickte Feld den Wert "EMPTY" wird erst der Spielstein im Feld platziert, danach wird das Spielfeld aktualisiert, auf Sieg oder
      * Unentschieden überprüft, der Spielerwechsel gemacht, das Spielfeld für den Spieler der gerade einen Zug gemacht hat gesperrt,
      * die Spaltennummer an den Gegner gesendet und die Methode handleOtherPlayerMove zum Umgang mit einem gegnerischen Zug aufgerufen.
@@ -111,7 +110,8 @@ public class GamePanel extends JPanel implements MouseListener {
 	}
     
 	/**
-	 * Die Methode handleOtherPlayerMove umfasst den Umgang mit einem gegnerischen Zug. Es wird als erstes überprüft welcher Spieler an der Reihe ist.
+	 * Die Methode handleOtherPlayerMove umfasst den Umgang mit einem gegnerischen Zug.
+	 * Es wird als erstes überprüft welcher Spieler an der Reihe ist.
 	 * Der andere Spiel wird dann in eine wartende Position gestellt und die Methode empfange ausgeführt, sodass die Spaltennummer des Zugs des Gegners
 	 * empfangen werden kann. Danach wird der Zug des Gegners gesetzt, das Spielfeld aktualisiert, auf Sieg oder
      * Unentschieden überprüft, der Spielerwechsel gemacht, die Spaltennummer an den Gegner gesendet und die Methode enableGameField, die das 
@@ -140,7 +140,8 @@ public class GamePanel extends JPanel implements MouseListener {
     }
     
     /**
-     * Die Methode sendColumnToOtherPlayer überprüft welcher Spieler gerade an der Reihe ist. Je nach dem wer an der Reihe ist wird dann 
+     * Die Methode sendColumnToOtherPlayer überprüft welcher Spieler gerade an der Reihe ist.
+     * Je nach dem wer an der Reihe ist wird dann 
      * entweder die send Methode des Servers oder des Client aufgerufen und die übergebene Spaltennummer gesendet.
      * @param int col
      */
@@ -152,6 +153,9 @@ public class GamePanel extends JPanel implements MouseListener {
     	}
     }
     
+    /**
+     * Die Methode enableGameField gibt das Spielfeld für einen Zug frei.
+     */
     private void enableGameField() {
     	setBackground(Color.BLUE);
     	resetAndRepaintFields();
@@ -159,6 +163,9 @@ public class GamePanel extends JPanel implements MouseListener {
 	}
 
 
+    /**
+     * Die Methode disableGameField sperrt das Spielfeld und verhindert das Klicken.
+     */
 	public void disableGameField() {
 		setBackground(Color.GRAY);
 		resetAndRepaintFields();
