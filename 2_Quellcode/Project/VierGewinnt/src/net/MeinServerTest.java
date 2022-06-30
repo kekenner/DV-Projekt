@@ -17,9 +17,14 @@ import javax.swing.JOptionPane;
  */
 public class MeinServerTest {
 
-	private ServerSocket serverSocket; // serverSocket hï¿½rt auf Verbindungsanfragen des Clients
-	private Socket clientSocket; // clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom
-								// Client zu empfangen.
+	/**
+	 * serverSocket hört auf Verbindungsanfragen des Clients
+	 */
+	private ServerSocket serverSocket;
+	/**
+	 * clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom Client zu empfangen.
+	 */
+	private Socket clientSocket;
 	/**
 	 * BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
 	 */
@@ -28,6 +33,9 @@ public class MeinServerTest {
 	 * PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
 	 */
 	public PrintWriter out;
+	/**
+	 * Spaltennummer, die versendet wird.
+	 */
 	private int spalte;
 	
 	/**

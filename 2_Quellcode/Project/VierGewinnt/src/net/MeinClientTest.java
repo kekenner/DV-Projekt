@@ -15,8 +15,10 @@ import java.util.Scanner;
  */
 public class MeinClientTest {
 	
-	private Socket clientSocket; // clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom
-								// Client zu empfangen
+	/**
+	 * clientSocket wird vom Server verwendet um Daten zum Client zu senden oder vom Client zu empfangen
+	 */
+	private Socket clientSocket;
 	/**
 	 * BufferedReader wird verwendet, um Daten aus dem clientSocket zu lesen.
 	 */
@@ -25,6 +27,9 @@ public class MeinClientTest {
 	 * PrintWriter wird verwendet, um Daten in das clientSocket zu schreiben.
 	 */
 	public PrintWriter out;
+	/**
+	 * Spaltennummer, die versendet wird.
+	 */
 	private int spalte;
 	
 	/**
